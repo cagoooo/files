@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="brush" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#FF6B6B"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Paint palette shape -->
+  <ellipse cx="256" cy="280" rx="150" ry="140" fill="white" opacity="0.95"/>
+  <!-- Palette hole -->
+  <ellipse cx="200" cy="240" rx="28" ry="26" fill="url(#bg)"/>
+  <!-- Color dots on palette -->
+  <circle cx="280" cy="200" r="22" fill="#FF6B6B"/>
+  <circle cx="330" cy="240" r="20" fill="#26DE81"/>
+  <circle cx="320" cy="300" r="18" fill="#45AAF2"/>
+  <circle cx="260" cy="340" r="20" fill="#FD9644"/>
+  <circle cx="190" cy="330" r="16" fill="#A55EEA"/>
+  <!-- Paint brush -->
+  <g transform="translate(300, 140) rotate(35)">
+    <rect x="-8" y="-90" width="16" height="70" rx="4" fill="#8B6914"/>
+    <rect x="-12" y="-24" width="24" height="50" rx="6" fill="url(#brush)"/>
+    <rect x="-8" y="-94" width="16" height="12" rx="3" fill="#C0C0C0"/>
+  </g>
+  <!-- Upload arrow -->
+  <g transform="translate(256, 410)">
+    <rect x="-20" y="-8" width="40" height="16" rx="4" fill="white" opacity="0.9"/>
+    <polygon points="0,-22 -14,-6 -6,-6 -6,4 6,4 6,-6 14,-6" fill="white" opacity="0.9"/>
+  </g>
+</svg>

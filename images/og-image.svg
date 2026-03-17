@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#FF6B6B"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <!-- Dot pattern -->
+  <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="15" cy="15" r="1.5" fill="white" opacity="0.08"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="100" r="180" fill="white" opacity="0.05"/>
+  <circle cx="150" cy="530" r="120" fill="white" opacity="0.05"/>
+  <circle cx="900" cy="500" r="80" fill="white" opacity="0.04"/>
+  <!-- Palette icon -->
+  <g transform="translate(180, 315)">
+    <ellipse cx="0" cy="0" rx="85" ry="80" fill="white" opacity="0.95"/>
+    <ellipse cx="-30" cy="-20" rx="14" ry="13" fill="#667eea"/>
+    <circle cx="25" cy="-35" r="12" fill="#FF6B6B"/>
+    <circle cx="50" cy="-10" r="11" fill="#26DE81"/>
+    <circle cx="40" cy="25" r="10" fill="#45AAF2"/>
+    <circle cx="5" cy="40" r="11" fill="#FD9644"/>
+    <circle cx="-25" cy="30" r="9" fill="#A55EEA"/>
+  </g>
+  <!-- Title text -->
+  <text x="340" y="260" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="white">手作課</text>
+  <text x="340" y="350" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="url(#accentGrad)">作品上傳平台</text>
+  <!-- Subtitle -->
+  <text x="340" y="410" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.85">記錄每一份用心創作的美好時刻</text>
+  <!-- Class badges -->
+  <g transform="translate(340, 460)">
+    <rect x="0" y="0" width="80" height="36" rx="18" fill="#6C63FF"/>
+    <text x="40" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">601</text>
+    <rect x="90" y="0" width="80" height="36" rx="18" fill="#FF6B6B"/>
+    <text x="130" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">602</text>
+    <rect x="180" y="0" width="80" height="36" rx="18" fill="#26DE81"/>
+    <text x="220" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">603</text>
+    <rect x="270" y="0" width="80" height="36" rx="18" fill="#FD9644"/>
+    <text x="310" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">604</text>
+    <rect x="360" y="0" width="80" height="36" rx="18" fill="#45AAF2"/>
+    <text x="400" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">605</text>
+    <rect x="450" y="0" width="80" height="36" rx="18" fill="#A55EEA"/>
+    <text x="490" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">606</text>
+  </g>
+  <!-- Upload icon -->
+  <g transform="translate(340, 530)">
+    <rect x="0" y="0" width="160" height="40" rx="20" fill="white" opacity="0.15"/>
+    <polygon points="30,18 22,26 26,26 26,32 34,32 34,26 38,26" fill="white" opacity="0.9"/>
+    <text x="50" y="27" font-family="Arial, sans-serif" font-size="15" fill="white" opacity="0.9" font-weight="600">Google Drive</text>
+  </g>
+</svg>
