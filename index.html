@@ -3,45 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手作課作品上傳平台</title>
+    <title>手作課作品上傳平台 ✂️🎨</title>
     <meta name="description" content="六年級手作課作品上傳平台 — 記錄每一份用心創作的美好時刻，透過 Google 雲端輕鬆上傳照片與影片。">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook / LINE -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="手作課作品上傳平台">
+    <meta property="og:url" content="https://cagoooo.github.io/files/">
+    <meta property="og:title" content="手作課作品上傳平台 ✂️🎨">
     <meta property="og:description" content="六年級手作課作品上傳平台 — 記錄每一份用心創作的美好時刻，透過 Google 雲端輕鬆上傳照片與影片。">
-    <meta property="og:image" content="images/og-image.svg">
+    <meta property="og:image" content="https://cagoooo.github.io/files/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="手作課作品上傳平台">
+    <meta property="og:locale" content="zh_TW">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="手作課作品上傳平台">
+    <meta name="twitter:title" content="手作課作品上傳平台 ✂️🎨">
     <meta name="twitter:description" content="六年級手作課作品上傳平台 — 記錄每一份用心創作的美好時刻">
-    <meta name="twitter:image" content="images/og-image.svg">
+    <meta name="twitter:image" content="https://cagoooo.github.io/files/images/og-image.png">
 
-    <!-- LINE -->
-    <meta property="og:site_name" content="手作課作品上傳平台">
+    <!-- Google Fonts: Fredoka (heading) + Nunito (body) — Playful Creative -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- 載入動畫 -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <span class="loader-scissors">✂️</span>
+                <span class="loader-palette">🎨</span>
+            </div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+
     <!-- 頂部導覽列 -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="主導覽">
         <div class="nav-content">
-            <div class="nav-brand">
-                <span class="nav-icon">🎨</span>
-                <span class="nav-title">手作課作品上傳平台</span>
+            <a href="#" class="nav-brand" aria-label="手作課作品上傳平台首頁">
+                <div class="nav-logo">
+                    <svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B6B"/>
+                                <stop offset="50%" style="stop-color:#4ECDC4"/>
+                                <stop offset="100%" style="stop-color:#FFE66D"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100" height="100" rx="22" fill="url(#navGrad)"/>
+                        <text x="50" y="68" text-anchor="middle" font-size="50" font-weight="bold" fill="white">作</text>
+                    </svg>
+                </div>
+                <span class="nav-title">手作課作品上傳</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#classes" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    班級專區
+                </a>
+                <a href="#guide" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    使用說明
+                </a>
+                <a href="#contact" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    聯絡我們
+                </a>
             </div>
-            <div class="nav-links">
-                <a href="#classes">班級專區</a>
-                <a href="#guide">使用說明</a>
-                <a href="#contact">聯絡我們</a>
-            </div>
-            <button class="nav-toggle" aria-label="選單">
+            <button class="nav-toggle" id="navToggle" aria-label="開啟導覽選單" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -49,24 +89,70 @@
 
     <!-- 主視覺區 -->
     <header class="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+            <!-- 漂浮手作元素 -->
+            <div class="floating-crafts" aria-hidden="true">
+                <span class="craft-item craft-1">✂️</span>
+                <span class="craft-item craft-2">🎨</span>
+                <span class="craft-item craft-3">📷</span>
+                <span class="craft-item craft-4">🖌️</span>
+                <span class="craft-item craft-5">📐</span>
+                <span class="craft-item craft-6">🧶</span>
+                <span class="craft-item craft-7">🎭</span>
+                <span class="craft-item craft-8">✏️</span>
+                <span class="craft-item craft-9">📎</span>
+                <span class="craft-item craft-10">🌟</span>
+            </div>
+        </div>
         <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                六年級專屬
+            </div>
             <h1 class="hero-title">
                 <span class="title-line">手作課</span>
-                <span class="title-line accent">作品上傳平台</span>
+                <span class="title-line title-gradient">作品上傳平台</span>
             </h1>
-            <p class="hero-subtitle">記錄每一份用心創作的美好時刻</p>
-            <a href="#classes" class="hero-btn">
-                <span>開始上傳</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                </svg>
-            </a>
+            <p class="hero-subtitle">記錄每一份用心創作的美好時刻<br class="mobile-br">透過 Google 雲端輕鬆上傳照片與影片</p>
+            <div class="hero-actions">
+                <a href="#classes" class="hero-btn primary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <span>選擇班級上傳</span>
+                </a>
+                <a href="#guide" class="hero-btn secondary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span>如何使用？</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">個班級</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">創意作品</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </span>
+                    <span class="stat-label">安全雲端</span>
+                </div>
+            </div>
         </div>
-        <div class="hero-decoration">
-            <div class="float-shape shape-1"></div>
-            <div class="float-shape shape-2"></div>
-            <div class="float-shape shape-3"></div>
+        <div class="scroll-indicator" aria-hidden="true">
+            <span class="scroll-text">往下滑動</span>
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </div>
         </div>
     </header>
 
@@ -74,143 +160,181 @@
     <section id="classes" class="section classes-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">選擇你的班級</span>
+                <span class="section-tag">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    選擇你的班級
+                </span>
                 <h2 class="section-title">班級專區</h2>
                 <p class="section-desc">點擊你所屬的班級卡片，即可前往 Google 雲端資料夾上傳作品</p>
             </div>
-            <div class="class-grid">
+            <div class="class-grid" role="list">
                 <!-- 六年一班 -->
-                <div class="class-card" data-class="1">
+                <article class="class-card" data-class="1" role="listitem">
+                    <div class="card-shimmer"></div>
                     <div class="card-accent"></div>
-                    <div class="card-bg-deco"></div>
+                    <div class="card-bg-deco" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="currentColor" opacity="0.06"/></svg>
+                    </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="card-icon">
+                            <div class="card-icon" aria-hidden="true">
                                 <span>1</span>
                             </div>
                             <span class="card-badge">601</span>
                         </div>
                         <h3 class="card-title">六年一班</h3>
                         <p class="card-desc">點擊下方按鈕上傳你的手作課作品照片與影片</p>
-                        <a href="#" class="card-btn" data-folder="CLASS_1_FOLDER_ID" onclick="openDriveFolder(this, event)">
+                        <a href="#" class="card-btn" data-folder="CLASS_1_FOLDER_ID" onclick="openDriveFolder(this, event)" role="button" aria-label="開啟六年一班的 Google Drive 資料夾">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                             </svg>
                             <span>上傳作品</span>
+                            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
                     </div>
-                </div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                </article>
 
                 <!-- 六年二班 -->
-                <div class="class-card" data-class="2">
+                <article class="class-card" data-class="2" role="listitem">
+                    <div class="card-shimmer"></div>
                     <div class="card-accent"></div>
-                    <div class="card-bg-deco"></div>
+                    <div class="card-bg-deco" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="currentColor" opacity="0.06"/></svg>
+                    </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="card-icon">
+                            <div class="card-icon" aria-hidden="true">
                                 <span>2</span>
                             </div>
                             <span class="card-badge">602</span>
                         </div>
                         <h3 class="card-title">六年二班</h3>
                         <p class="card-desc">點擊下方按鈕上傳你的手作課作品照片與影片</p>
-                        <a href="#" class="card-btn" data-folder="CLASS_2_FOLDER_ID" onclick="openDriveFolder(this, event)">
+                        <a href="#" class="card-btn" data-folder="CLASS_2_FOLDER_ID" onclick="openDriveFolder(this, event)" role="button" aria-label="開啟六年二班的 Google Drive 資料夾">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                             </svg>
                             <span>上傳作品</span>
+                            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
                     </div>
-                </div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                </article>
 
                 <!-- 六年三班 -->
-                <div class="class-card" data-class="3">
+                <article class="class-card" data-class="3" role="listitem">
+                    <div class="card-shimmer"></div>
                     <div class="card-accent"></div>
-                    <div class="card-bg-deco"></div>
+                    <div class="card-bg-deco" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="currentColor" opacity="0.06"/></svg>
+                    </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="card-icon">
+                            <div class="card-icon" aria-hidden="true">
                                 <span>3</span>
                             </div>
                             <span class="card-badge">603</span>
                         </div>
                         <h3 class="card-title">六年三班</h3>
                         <p class="card-desc">點擊下方按鈕上傳你的手作課作品照片與影片</p>
-                        <a href="#" class="card-btn" data-folder="CLASS_3_FOLDER_ID" onclick="openDriveFolder(this, event)">
+                        <a href="#" class="card-btn" data-folder="CLASS_3_FOLDER_ID" onclick="openDriveFolder(this, event)" role="button" aria-label="開啟六年三班的 Google Drive 資料夾">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                             </svg>
                             <span>上傳作品</span>
+                            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
                     </div>
-                </div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                </article>
 
                 <!-- 六年四班 -->
-                <div class="class-card" data-class="4">
+                <article class="class-card" data-class="4" role="listitem">
+                    <div class="card-shimmer"></div>
                     <div class="card-accent"></div>
-                    <div class="card-bg-deco"></div>
+                    <div class="card-bg-deco" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="currentColor" opacity="0.06"/></svg>
+                    </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="card-icon">
+                            <div class="card-icon" aria-hidden="true">
                                 <span>4</span>
                             </div>
                             <span class="card-badge">604</span>
                         </div>
                         <h3 class="card-title">六年四班</h3>
                         <p class="card-desc">點擊下方按鈕上傳你的手作課作品照片與影片</p>
-                        <a href="#" class="card-btn" data-folder="CLASS_4_FOLDER_ID" onclick="openDriveFolder(this, event)">
+                        <a href="#" class="card-btn" data-folder="CLASS_4_FOLDER_ID" onclick="openDriveFolder(this, event)" role="button" aria-label="開啟六年四班的 Google Drive 資料夾">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                             </svg>
                             <span>上傳作品</span>
+                            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
                     </div>
-                </div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                </article>
 
                 <!-- 六年五班 -->
-                <div class="class-card" data-class="5">
+                <article class="class-card" data-class="5" role="listitem">
+                    <div class="card-shimmer"></div>
                     <div class="card-accent"></div>
-                    <div class="card-bg-deco"></div>
+                    <div class="card-bg-deco" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="currentColor" opacity="0.06"/></svg>
+                    </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="card-icon">
+                            <div class="card-icon" aria-hidden="true">
                                 <span>5</span>
                             </div>
                             <span class="card-badge">605</span>
                         </div>
                         <h3 class="card-title">六年五班</h3>
                         <p class="card-desc">點擊下方按鈕上傳你的手作課作品照片與影片</p>
-                        <a href="#" class="card-btn" data-folder="CLASS_5_FOLDER_ID" onclick="openDriveFolder(this, event)">
+                        <a href="#" class="card-btn" data-folder="CLASS_5_FOLDER_ID" onclick="openDriveFolder(this, event)" role="button" aria-label="開啟六年五班的 Google Drive 資料夾">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                             </svg>
                             <span>上傳作品</span>
+                            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
                     </div>
-                </div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                </article>
 
                 <!-- 六年六班 -->
-                <div class="class-card" data-class="6">
+                <article class="class-card" data-class="6" role="listitem">
+                    <div class="card-shimmer"></div>
                     <div class="card-accent"></div>
-                    <div class="card-bg-deco"></div>
+                    <div class="card-bg-deco" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="currentColor" opacity="0.06"/></svg>
+                    </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <div class="card-icon">
+                            <div class="card-icon" aria-hidden="true">
                                 <span>6</span>
                             </div>
                             <span class="card-badge">606</span>
                         </div>
                         <h3 class="card-title">六年六班</h3>
                         <p class="card-desc">點擊下方按鈕上傳你的手作課作品照片與影片</p>
-                        <a href="#" class="card-btn" data-folder="CLASS_6_FOLDER_ID" onclick="openDriveFolder(this, event)">
+                        <a href="#" class="card-btn" data-folder="CLASS_6_FOLDER_ID" onclick="openDriveFolder(this, event)" role="button" aria-label="開啟六年六班的 Google Drive 資料夾">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                             </svg>
                             <span>上傳作品</span>
+                            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
                     </div>
-                </div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                </article>
             </div>
+        </div>
+        <!-- 裝飾背景 -->
+        <div class="section-deco" aria-hidden="true">
+            <div class="deco-circle deco-1"></div>
+            <div class="deco-circle deco-2"></div>
         </div>
     </section>
 
@@ -218,44 +342,85 @@
     <section id="guide" class="section guide-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">簡單三步驟</span>
+                <span class="section-tag">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    簡單三步驟
+                </span>
                 <h2 class="section-title">使用說明</h2>
+                <p class="section-desc">跟著以下步驟，輕鬆完成作品上傳</p>
             </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <div class="step-icon">🏫</div>
-                    <h3>選擇班級</h3>
-                    <p>在上方找到你所屬的班級卡片</p>
+            <div class="steps-timeline">
+                <div class="timeline-line" aria-hidden="true"></div>
+                <div class="step-card" data-step="1">
+                    <div class="step-indicator">
+                        <div class="step-dot">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-icon-wrap">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3>選擇班級</h3>
+                        <p>在上方找到你所屬的班級卡片（601～606）</p>
+                    </div>
                 </div>
-                <div class="step-connector">
-                    <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36M30 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                <div class="step-card" data-step="2">
+                    <div class="step-indicator">
+                        <div class="step-dot">
+                            <span>2</span>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-icon-wrap">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h3>開啟資料夾</h3>
+                        <p>點擊「上傳作品」按鈕，自動前往 Google 雲端資料夾</p>
+                    </div>
                 </div>
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <div class="step-icon">📂</div>
-                    <h3>開啟資料夾</h3>
-                    <p>點擊「上傳作品」按鈕，前往 Google 雲端資料夾</p>
-                </div>
-                <div class="step-connector">
-                    <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h36M30 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <div class="step-icon">⬆️</div>
-                    <h3>上傳作品</h3>
-                    <p>將照片或影片拖曳上傳至資料夾即可完成</p>
+                <div class="step-card" data-step="3">
+                    <div class="step-indicator">
+                        <div class="step-dot">
+                            <span>3</span>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-icon-wrap">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                        </div>
+                        <h3>上傳作品</h3>
+                        <p>將照片或影片拖曳上傳至資料夾即可完成！</p>
+                    </div>
                 </div>
             </div>
 
             <div class="tips-box">
-                <h3>📌 注意事項</h3>
-                <ul>
-                    <li>請使用學校 Google 帳號登入後再上傳</li>
-                    <li>支援的檔案格式：JPG、PNG、MP4、MOV</li>
-                    <li>建議檔案命名格式：<strong>座號_姓名_作品名稱</strong></li>
-                    <li>每位同學請上傳至自己班級的資料夾，勿上傳至其他班級</li>
-                    <li>如有任何問題，請聯絡老師協助處理</li>
+                <div class="tips-header">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <h3>注意事項</h3>
+                </div>
+                <ul class="tips-list">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        請使用學校 Google 帳號登入後再上傳
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        支援的檔案格式：<strong>JPG、PNG、MP4、MOV</strong>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        建議檔案命名格式：<strong>座號_姓名_作品名稱</strong>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        請上傳至<strong>自己班級</strong>的資料夾，勿上傳至其他班級
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        如有任何問題，請聯絡老師協助處理
+                    </li>
                 </ul>
             </div>
         </div>
@@ -265,16 +430,25 @@
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="contact-card">
-                <h2>需要幫助嗎？</h2>
-                <p>如果在上傳過程中遇到任何問題，歡迎聯繫老師</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <span>teacher@school.edu.tw</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">🏫</span>
-                        <span>手作課教室</span>
+                <div class="contact-deco" aria-hidden="true">
+                    <div class="contact-circle c1"></div>
+                    <div class="contact-circle c2"></div>
+                </div>
+                <div class="contact-inner">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    <h2>需要幫助嗎？</h2>
+                    <p>如果在上傳過程中遇到任何問題，歡迎聯繫老師</p>
+                    <div class="contact-info">
+                        <a href="mailto:teacher@school.edu.tw" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <span>teacher@school.edu.tw</span>
+                        </a>
+                        <div class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span>手作課教室</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -282,18 +456,40 @@
     </section>
 
     <!-- 頁尾 -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
-            <p>&copy; 2026 手作課作品上傳平台 ｜ 用心創作，記錄美好</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="footGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B6B"/>
+                                <stop offset="100%" style="stop-color:#4ECDC4"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100" height="100" rx="22" fill="url(#footGrad)"/>
+                        <text x="50" y="68" text-anchor="middle" font-size="50" font-weight="bold" fill="white">作</text>
+                    </svg>
+                    <span>手作課作品上傳平台</span>
+                </div>
+                <p class="footer-copy">&copy; 2026 手作課作品上傳平台 ｜ 用心創作，記錄美好</p>
+            </div>
         </div>
     </footer>
 
+    <!-- 回到頂端按鈕 -->
+    <button id="backToTop" class="back-to-top" aria-label="回到頂端" title="回到頂端">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
     <!-- 提示訊息 Modal -->
-    <div id="configModal" class="modal" style="display:none;">
-        <div class="modal-overlay"></div>
+    <div id="configModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-overlay" tabindex="-1"></div>
         <div class="modal-content">
-            <div class="modal-icon">⚙️</div>
-            <h3>尚未設定資料夾連結</h3>
+            <div class="modal-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <h3 id="modalTitle">尚未設定資料夾連結</h3>
             <p>請老師先在 <code>js/config.js</code> 中設定各班級的 Google Drive 資料夾 ID。</p>
             <p class="modal-hint">詳細設定方式請參考 README 說明文件。</p>
             <button class="modal-close-btn" onclick="closeModal()">我知道了</button>

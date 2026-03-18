@@ -2,58 +2,55 @@
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#667eea"/>
-      <stop offset="100%" stop-color="#764ba2"/>
+      <stop offset="50%" stop-color="#764ba2"/>
+      <stop offset="100%" stop-color="#f093fb"/>
     </linearGradient>
     <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="50%" stop-color="#FF6B6B"/>
       <stop offset="100%" stop-color="#FF6B6B"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="50%" stop-color="#4ECDC4"/>
+      <stop offset="100%" stop-color="#FFE66D"/>
     </linearGradient>
   </defs>
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
-  <!-- Dot pattern -->
-  <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-    <circle cx="15" cy="15" r="1.5" fill="white" opacity="0.08"/>
-  </pattern>
-  <rect width="1200" height="630" fill="url(#dots)"/>
-  <!-- Decorative circles -->
-  <circle cx="1050" cy="100" r="180" fill="white" opacity="0.05"/>
-  <circle cx="150" cy="530" r="120" fill="white" opacity="0.05"/>
-  <circle cx="900" cy="500" r="80" fill="white" opacity="0.04"/>
-  <!-- Palette icon -->
-  <g transform="translate(180, 315)">
-    <ellipse cx="0" cy="0" rx="85" ry="80" fill="white" opacity="0.95"/>
-    <ellipse cx="-30" cy="-20" rx="14" ry="13" fill="#667eea"/>
-    <circle cx="25" cy="-35" r="12" fill="#FF6B6B"/>
-    <circle cx="50" cy="-10" r="11" fill="#26DE81"/>
-    <circle cx="40" cy="25" r="10" fill="#45AAF2"/>
-    <circle cx="5" cy="40" r="11" fill="#FD9644"/>
-    <circle cx="-25" cy="30" r="9" fill="#A55EEA"/>
+  <!-- Pattern -->
+  <g opacity="0.06">
+    <circle cx="100" cy="100" r="70" fill="white"/>
+    <circle cx="1100" cy="530" r="90" fill="white"/>
+    <circle cx="1050" cy="120" r="50" fill="white"/>
+    <circle cx="150" cy="480" r="55" fill="white"/>
+    <circle cx="600" cy="50" r="40" fill="white"/>
   </g>
-  <!-- Title text -->
-  <text x="340" y="260" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="white">手作課</text>
-  <text x="340" y="350" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="url(#accentGrad)">作品上傳平台</text>
+  <!-- Logo -->
+  <rect x="530" y="100" width="90" height="90" rx="20" fill="url(#logoGrad)"/>
+  <text x="575" y="163" text-anchor="middle" font-size="50" font-weight="bold" fill="white" font-family="Arial, sans-serif">作</text>
+  <!-- Title -->
+  <text x="600" y="275" text-anchor="middle" font-size="78" font-weight="bold" fill="white" font-family="Arial, sans-serif">手作課</text>
+  <text x="600" y="365" text-anchor="middle" font-size="72" font-weight="bold" fill="url(#accentGrad)" font-family="Arial, sans-serif">作品上傳平台</text>
   <!-- Subtitle -->
-  <text x="340" y="410" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.85">記錄每一份用心創作的美好時刻</text>
-  <!-- Class badges -->
-  <g transform="translate(340, 460)">
-    <rect x="0" y="0" width="80" height="36" rx="18" fill="#6C63FF"/>
-    <text x="40" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">601</text>
-    <rect x="90" y="0" width="80" height="36" rx="18" fill="#FF6B6B"/>
-    <text x="130" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">602</text>
-    <rect x="180" y="0" width="80" height="36" rx="18" fill="#26DE81"/>
-    <text x="220" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">603</text>
-    <rect x="270" y="0" width="80" height="36" rx="18" fill="#FD9644"/>
-    <text x="310" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">604</text>
-    <rect x="360" y="0" width="80" height="36" rx="18" fill="#45AAF2"/>
-    <text x="400" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">605</text>
-    <rect x="450" y="0" width="80" height="36" rx="18" fill="#A55EEA"/>
-    <text x="490" y="24" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">606</text>
-  </g>
-  <!-- Upload icon -->
-  <g transform="translate(340, 530)">
-    <rect x="0" y="0" width="160" height="40" rx="20" fill="white" opacity="0.15"/>
-    <polygon points="30,18 22,26 26,26 26,32 34,32 34,26 38,26" fill="white" opacity="0.9"/>
-    <text x="50" y="27" font-family="Arial, sans-serif" font-size="15" fill="white" opacity="0.9" font-weight="600">Google Drive</text>
+  <text x="600" y="425" text-anchor="middle" font-size="28" fill="white" opacity="0.85" font-family="Arial, sans-serif">記錄每一份用心創作的美好時刻</text>
+  <!-- Badge -->
+  <rect x="415" y="460" width="370" height="46" rx="23" fill="rgba(255,255,255,0.15)"/>
+  <text x="600" y="491" text-anchor="middle" font-size="22" fill="white" font-family="Arial, sans-serif" font-weight="600">六年級專屬 ・ Google 雲端上傳</text>
+  <!-- Class color dots -->
+  <g transform="translate(400, 545)">
+    <circle cx="0" cy="0" r="14" fill="#6366F1"/>
+    <text x="0" y="5" text-anchor="middle" font-size="12" fill="white" font-weight="bold" font-family="Arial">1</text>
+    <circle cx="42" cy="0" r="14" fill="#EF4444"/>
+    <text x="42" y="5" text-anchor="middle" font-size="12" fill="white" font-weight="bold" font-family="Arial">2</text>
+    <circle cx="84" cy="0" r="14" fill="#10B981"/>
+    <text x="84" y="5" text-anchor="middle" font-size="12" fill="white" font-weight="bold" font-family="Arial">3</text>
+    <circle cx="126" cy="0" r="14" fill="#F59E0B"/>
+    <text x="126" y="5" text-anchor="middle" font-size="12" fill="white" font-weight="bold" font-family="Arial">4</text>
+    <circle cx="168" cy="0" r="14" fill="#3B82F6"/>
+    <text x="168" y="5" text-anchor="middle" font-size="12" fill="white" font-weight="bold" font-family="Arial">5</text>
+    <circle cx="210" cy="0" r="14" fill="#8B5CF6"/>
+    <text x="210" y="5" text-anchor="middle" font-size="12" fill="white" font-weight="bold" font-family="Arial">6</text>
+    <text x="250" y="6" font-size="18" fill="rgba(255,255,255,0.7)" font-family="Arial, sans-serif" font-weight="500">601~606 班級專區</text>
   </g>
 </svg>

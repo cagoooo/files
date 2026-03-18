@@ -1,21 +1,36 @@
 /**
- * 手作課作品上傳平台 - 主程式
+ * 手作課作品上傳平台 - 主程式 v2.0
+ * Features: Google Drive integration, scroll animations,
+ *           loader, back-to-top, mobile nav, accessibility
  */
 
-// ========== Google Drive 資料夾開啟 ==========
+// ========== Loader ==========
+window.addEventListener("load", function () {
+    var loader = document.getElementById("loader");
+    if (loader) {
+        setTimeout(function () {
+            loader.classList.add("hidden");
+        }, 1400);
+    }
+    handleScrollAnimations();
+});
+
+// ========== Google Drive ==========
 function openDriveFolder(element, event) {
     event.preventDefault();
-    const folderKey = element.getAttribute("data-folder");
-    const folderId = DRIVE_CONFIG[folderKey];
+    var folderKey = element.getAttribute("data-folder");
+    var folderId = DRIVE_CONFIG[folderKey];
 
     if (!folderId || folderId === "YOUR_FOLDER_ID_HERE") {
         document.getElementById("configModal").style.display = "flex";
+        document.getElementById("configModal").querySelector(".modal-close-btn").focus();
         return;
     }
 
     window.open(
-        `https://drive.google.com/drive/folders/${folderId}`,
-        "_blank"
+        "https://drive.google.com/drive/folders/" + folderId,
+        "_blank",
+        "noopener,noreferrer"
     );
 }
 
@@ -23,47 +38,118 @@ function closeModal() {
     document.getElementById("configModal").style.display = "none";
 }
 
-// 點擊 overlay 關閉 modal
+// Click overlay to close modal
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("modal-overlay")) {
         closeModal();
     }
 });
 
-// ========== Navbar 行動版選單 ==========
-document.querySelector(".nav-toggle").addEventListener("click", function () {
-    document.querySelector(".nav-links").classList.toggle("active");
+// ESC to close modal
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        closeModal();
+    }
 });
 
-// 點擊導覽連結後關閉選單
-document.querySelectorAll(".nav-links a").forEach(function (link) {
-    link.addEventListener("click", function () {
-        document.querySelector(".nav-links").classList.remove("active");
+// ========== Mobile Nav ==========
+var navToggle = document.getElementById("navToggle");
+var navLinks = document.getElementById("navLinks");
+
+if (navToggle && navLinks) {
+    navToggle.addEventListener("click", function () {
+        var isOpen = navLinks.classList.toggle("active");
+        navToggle.classList.toggle("active");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-});
 
-// ========== Navbar 捲動效果 ==========
+    // Close nav when clicking a link
+    navLinks.querySelectorAll(".nav-link").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+            navToggle.classList.remove("active");
+            navToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+}
+
+// ========== Navbar Scroll Effect ==========
+var lastScrollY = 0;
+
 window.addEventListener("scroll", function () {
     var navbar = document.querySelector(".navbar");
-    if (window.scrollY > 20) {
+    var scrollY = window.scrollY;
+
+    if (scrollY > 20) {
         navbar.classList.add("scrolled");
     } else {
         navbar.classList.remove("scrolled");
     }
-});
 
-// ========== 捲動進場動畫 ==========
-function handleScrollAnimations() {
-    var elements = document.querySelectorAll(
-        ".class-card, .step-card, .tips-box"
-    );
-    elements.forEach(function (el) {
-        var rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-            el.classList.add("visible");
+    lastScrollY = scrollY;
+}, { passive: true });
+
+// ========== Back to Top ==========
+var backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", function () {
+    if (backToTop) {
+        if (window.scrollY > 600) {
+            backToTop.classList.add("visible");
+        } else {
+            backToTop.classList.remove("visible");
         }
+    }
+}, { passive: true });
+
+if (backToTop) {
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 }
 
-window.addEventListener("scroll", handleScrollAnimations);
-window.addEventListener("load", handleScrollAnimations);
+// ========== Scroll Animations (Intersection Observer) ==========
+function handleScrollAnimations() {
+    var targets = document.querySelectorAll(
+        ".class-card, .step-card, .tips-box"
+    );
+
+    if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+        );
+
+        targets.forEach(function (el) {
+            observer.observe(el);
+        });
+    } else {
+        // Fallback for older browsers
+        targets.forEach(function (el) {
+            el.classList.add("visible");
+        });
+    }
+}
+
+// ========== Smooth scroll for anchor links ==========
+document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (e) {
+        var targetId = this.getAttribute("href");
+        if (targetId === "#") return;
+
+        var target = document.querySelector(targetId);
+        if (target) {
+            e.preventDefault();
+            var offset = 80; // navbar height
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: "smooth" });
+        }
+    });
+});
