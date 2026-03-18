@@ -15,7 +15,18 @@ window.addEventListener("load", function () {
     handleScrollAnimations();
 });
 
-// ========== Google Drive ==========
+// ========== Google Drive（含學校帳號登入導向） ==========
+/**
+ * 開啟 Google Drive 資料夾
+ * 流程：Google 登入頁（預填學校信箱網域）→ 登入成功 → 自動跳轉 Drive 資料夾
+ *
+ * URL 結構：
+ * https://accounts.google.com/v3/signin/identifier
+ *   ?Email=@mail2.smes.tyc.edu.tw        ← 預填學校信箱網域
+ *   &continue=https://drive.google.com/drive/folders/FOLDER_ID  ← 登入後跳轉目標
+ *   &flowName=GlifWebSignIn
+ *   &flowEntry=AddSession
+ */
 function openDriveFolder(element, event) {
     event.preventDefault();
     var folderKey = element.getAttribute("data-folder");
@@ -27,11 +38,20 @@ function openDriveFolder(element, event) {
         return;
     }
 
-    window.open(
-        "https://drive.google.com/drive/folders/" + folderId,
-        "_blank",
-        "noopener,noreferrer"
-    );
+    // Google Drive 資料夾目標 URL
+    var driveUrl = "https://drive.google.com/drive/folders/" + folderId;
+
+    // 學校信箱網域（從 config.js 讀取）
+    var emailDomain = DRIVE_CONFIG.SCHOOL_EMAIL_DOMAIN || "@mail2.smes.tyc.edu.tw";
+
+    // 組合 Google 登入 URL：預填信箱網域 + 登入後跳轉至 Drive 資料夾
+    var loginUrl = "https://accounts.google.com/v3/signin/identifier"
+        + "?Email=" + encodeURIComponent(emailDomain)
+        + "&continue=" + encodeURIComponent(driveUrl)
+        + "&flowName=GlifWebSignIn"
+        + "&flowEntry=AddSession";
+
+    window.open(loginUrl, "_blank", "noopener,noreferrer");
 }
 
 function closeModal() {
