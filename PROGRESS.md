@@ -1,37 +1,54 @@
 # 手作課作品上傳平台 — 開發進度與未來規劃
 
-> 最後更新：2026-03-18
+> **目前版本**：v2.1
+> **最後更新**：2026-03-18
+> **GitHub**：https://github.com/cagoooo/files
+> **線上版**：https://cagoooo.github.io/files/
+
+---
+
+## 零、版本紀錄
+
+| 版本 | 日期 | 說明 |
+|------|------|------|
+| **v2.1** | 2026-03-18 | 加入石門信箱登入導向機制、預填 `@mail2.smes.tyc.edu.tw` 網域、登入提示 UI |
+| **v2.0** | 2026-03-18 | 全面 UI/UX 優化、Fredoka + Nunito 字體、載入動畫、IntersectionObserver、PROGRESS.md |
+| **v1.0** | 2026-03-18 | 初始版本：6 班級 Google Drive 串接、RWD 響應式、基礎 UI |
 
 ---
 
 ## 一、已完成項目 ✅
 
-| # | 項目 | 狀態 | 說明 |
+| # | 項目 | 版本 | 說明 |
 |---|------|------|------|
-| 1 | **基礎網站架構** | ✅ 完成 | HTML5 + CSS3 + Vanilla JS，純靜態網站 |
-| 2 | **Google Drive 串接** | ✅ 完成 | 6 個班級（601-606）各自串接獨立的 Google Drive 資料夾 |
-| 3 | **Google Drive 資料夾 ID 設定** | ✅ 完成 | 所有 6 個班級的真實 folder ID 已配置在 `js/config.js` |
-| 4 | **班級卡片 UI** | ✅ 完成 | 6 色漸層卡片，hover 動效（位移、縮放、光暈、shimmer） |
-| 5 | **RWD 響應式設計** | ✅ 完成 | 桌面 3 欄 / 平板 2 欄 / 手機 1 欄，含行動版漢堡選單 |
-| 6 | **導覽列 (Navbar)** | ✅ 完成 | 固定頂部、毛玻璃效果、捲動時陰影變化、行動版選單 |
-| 7 | **主視覺 Hero 區** | ✅ 完成 | 全螢幕漸層背景、漂浮手作元素動畫、統計數據、雙按鈕 CTA |
-| 8 | **使用說明區** | ✅ 完成 | 時間軸三步驟設計、注意事項清單（含 SVG 圖示） |
-| 9 | **聯絡資訊區** | ✅ 完成 | 漸層卡片、裝飾圓形、email 連結 |
-| 10 | **SVG Favicon** | ✅ 完成 | 三色漸層「作」字圖示，配上傳箭頭 |
-| 11 | **社群分享預覽圖 (OG Image)** | ✅ 完成 | 1200x630 SVG，支援 FB/LINE/Twitter 分享卡片 |
-| 12 | **Open Graph / Twitter / LINE Meta Tags** | ✅ 完成 | 完整的 OG 標籤含絕對路徑 |
-| 13 | **Google Fonts 字體** | ✅ 完成 | Fredoka（標題）+ Nunito（內文），Playful Creative 風格 |
-| 14 | **捲動進場動畫** | ✅ 完成 | IntersectionObserver 實作，含交錯延遲效果 |
-| 15 | **回到頂端按鈕** | ✅ 完成 | 捲動顯示/隱藏，平滑回頂 |
-| 16 | **載入動畫 (Loader)** | ✅ 完成 | 彈跳剪刀+調色盤圖示，進度條動畫 |
-| 17 | **無障礙 (Accessibility)** | ✅ 完成 | ARIA 標籤、role 屬性、focus-visible、ESC 關閉 Modal、keyboard nav |
-| 18 | **Reduced Motion** | ✅ 完成 | `prefers-reduced-motion` 媒體查詢支援 |
-| 19 | **未設定提示 Modal** | ✅ 完成 | 當 folder ID 未設定時顯示引導彈窗 |
-| 20 | **GitHub 推送** | ✅ 完成 | 已推送至 `https://github.com/cagoooo/files` |
-| 21 | **GitHub Pages 準備** | ✅ 完成 | 結構已就緒，OG image 使用絕對路徑 |
-| 22 | **README 文件** | ✅ 完成 | 含設定教學、檔案結構、權限建議 |
-| 23 | **列印樣式** | ✅ 完成 | `@media print` 隱藏不必要元素 |
-| 24 | **UI/UX Pro Max 參考** | ✅ 完成 | 已參考色彩、字體、無障礙、教育類 UI 設計建議 |
+| 1 | **基礎網站架構** | v1.0 | HTML5 + CSS3 + Vanilla JS，純靜態網站 |
+| 2 | **Google Drive 串接** | v1.0 | 6 個班級（601-606）各自串接獨立的 Google Drive 資料夾 |
+| 3 | **Google Drive 資料夾 ID 設定** | v1.0 | 所有 6 個班級的真實 folder ID 已配置在 `js/config.js` |
+| 4 | **班級卡片 UI** | v2.0 | 6 色漸層卡片，hover 動效（位移、縮放、光暈、shimmer） |
+| 5 | **RWD 響應式設計** | v1.0 | 桌面 3 欄 / 平板 2 欄 / 手機 1 欄，含行動版漢堡選單 |
+| 6 | **導覽列 (Navbar)** | v2.0 | 固定頂部、毛玻璃效果、捲動時陰影變化、行動版選單 |
+| 7 | **主視覺 Hero 區** | v2.0 | 全螢幕漸層背景、漂浮手作元素動畫、統計數據、雙按鈕 CTA |
+| 8 | **使用說明區** | v2.0 | 時間軸三步驟設計、注意事項清單（含 SVG 圖示） |
+| 9 | **聯絡資訊區** | v2.0 | 漸層卡片、裝飾圓形、email 連結 |
+| 10 | **SVG Favicon** | v2.0 | 三色漸層「作」字圖示，配上傳箭頭 |
+| 11 | **社群分享預覽圖 (OG Image)** | v2.0 | 1200x630 SVG，支援 FB/LINE/Twitter 分享卡片 |
+| 12 | **Open Graph / Twitter / LINE Meta Tags** | v2.0 | 完整的 OG 標籤含絕對路徑 |
+| 13 | **Google Fonts 字體** | v2.0 | Fredoka（標題）+ Nunito（內文），Playful Creative 風格 |
+| 14 | **捲動進場動畫** | v2.0 | IntersectionObserver 實作，含交錯延遲效果 |
+| 15 | **回到頂端按鈕** | v2.0 | 捲動顯示/隱藏，平滑回頂 |
+| 16 | **載入動畫 (Loader)** | v2.0 | 彈跳剪刀+調色盤圖示，進度條動畫 |
+| 17 | **無障礙 (Accessibility)** | v2.0 | ARIA 標籤、role 屬性、focus-visible、ESC 關閉 Modal、keyboard nav |
+| 18 | **Reduced Motion** | v2.0 | `prefers-reduced-motion` 媒體查詢支援 |
+| 19 | **未設定提示 Modal** | v1.0 | 當 folder ID 未設定時顯示引導彈窗 |
+| 20 | **GitHub 推送** | v1.0 | 已推送至 `https://github.com/cagoooo/files` |
+| 21 | **GitHub Pages 準備** | v2.0 | 結構已就緒，OG image 使用絕對路徑 |
+| 22 | **README 文件** | v2.1 | 含設定教學、登入機制說明、版本紀錄、檔案結構 |
+| 23 | **列印樣式** | v2.0 | `@media print` 隱藏不必要元素 |
+| 24 | **UI/UX Pro Max 參考** | v2.0 | 已參考色彩、字體、無障礙、教育類 UI 設計建議 |
+| 25 | **石門信箱登入導向** | v2.1 | 點擊上傳→自動跳轉 Google 登入→預填 `@mail2.smes.tyc.edu.tw` |
+| 26 | **學校信箱網域設定** | v2.1 | `config.js` 可自訂 `SCHOOL_EMAIL_DOMAIN`，全站自動套用 |
+| 27 | **登入提示 UI** | v2.1 | 班級專區顯示橘色信箱網域提示 badge |
+| 28 | **使用說明更新** | v2.1 | 步驟 2 更新為「登入石門信箱」，注意事項更新對應文字 |
 
 ---
 
@@ -41,7 +58,7 @@
 |---|------|--------|------|
 | 1 | **啟用 GitHub Pages** | 🔴 高 | 到 GitHub Settings → Pages → Deploy from branch (main) → Save |
 | 2 | **OG Image 轉 PNG 格式** | 🟡 中 | 多數社群平台不支援 SVG 作為 OG Image，建議轉為 PNG 後替換 |
-| 3 | **Google Drive 資料夾權限** | 🔴 高 | 需確認每個 Drive 資料夾設定為「知道連結的人皆可編輯」 |
+| 3 | **Google Drive 資料夾權限** | 🔴 高 | 需確認每個 Drive 資料夾已將 `@mail2.smes.tyc.edu.tw` 學生帳號加為編輯者 |
 | 4 | **更新聯絡 Email** | 🟡 中 | 將 `teacher@school.edu.tw` 替換為真實 email |
 
 ---
@@ -198,14 +215,14 @@ files/
 ├── css/
 │   └── style.css           # 樣式表 (CSS Variables + RWD)
 ├── js/
-│   ├── config.js           # Google Drive 資料夾 ID 設定
-│   └── main.js             # 互動功能 (Vanilla JS)
+│   ├── config.js           # Google Drive 資料夾 ID + 學校信箱網域設定
+│   └── main.js             # 互動功能 (含登入導向機制)
 ├── images/
-│   ├── favicon.svg          # 網站圖示
-│   └── og-image.svg         # 社群分享預覽圖
+│   ├── favicon.svg         # 網站圖示 (三色漸層「作」字)
+│   └── og-image.svg        # 社群分享預覽圖 (1200x630)
 ├── .gitignore
-├── README.md                # 設定教學文件
-└── PROGRESS.md              # 本進度追蹤文件
+├── README.md               # 設定教學 + 登入機制說明 + 版本紀錄
+└── PROGRESS.md             # 本進度追蹤文件
 ```
 
 ---
@@ -213,9 +230,12 @@ files/
 ## 七、部署 Checklist
 
 - [x] Google Drive 6 個班級資料夾 ID 已設定
-- [x] 程式碼已推送至 GitHub
+- [x] 石門信箱登入導向機制已實作
+- [x] 學校信箱網域 `@mail2.smes.tyc.edu.tw` 已設定
+- [x] 程式碼已推送至 GitHub（v2.1，共 3 個 commits）
+- [x] README.md 含完整版本紀錄與登入機制說明
 - [ ] 啟用 GitHub Pages（Settings → Pages → main branch）
-- [ ] 確認 Google Drive 各資料夾權限為「知道連結的人皆可編輯」
+- [ ] 確認 Google Drive 各資料夾已將學校帳號加為編輯者
 - [ ] 將 OG image 轉為 PNG 格式
 - [ ] 更新聯絡 Email 為真實地址
 - [ ] 使用 Lighthouse 檢測效能分數
