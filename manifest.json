@@ -1,0 +1,32 @@
+{
+    "name": "手作課作品上傳平台",
+    "short_name": "手作課上傳",
+    "description": "六年級手作課作品上傳平台 — 透過 Google 雲端輕鬆上傳照片與影片",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#FAFBFF",
+    "theme_color": "#4F46E5",
+    "orientation": "any",
+    "categories": ["education"],
+    "lang": "zh-TW",
+    "icons": [
+        {
+            "src": "images/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>手作課作品上傳平台 ✂️🎨</title>
-    <!-- Version: 2.2 | 2026-03-18 -->
+    <!-- Version: 3.0 | 2026-03-18 -->
     <meta name="description" content="六年級手作課作品上傳平台 — 記錄每一份用心創作的美好時刻，透過 Google 雲端輕鬆上傳照片與影片。">
 
     <!-- Favicon -->
@@ -34,6 +34,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="手作課上傳">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -196,6 +203,9 @@
                             <span>上傳作品</span>
                             <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
+                        <button class="qr-btn" onclick="showQRCode(this)" aria-label="顯示 QR Code" title="顯示 QR Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+                        </button>
                     </div>
                     <div class="card-glow" aria-hidden="true"></div>
                 </article>
@@ -223,6 +233,9 @@
                             <span>上傳作品</span>
                             <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
+                        <button class="qr-btn" onclick="showQRCode(this)" aria-label="顯示 QR Code" title="顯示 QR Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+                        </button>
                     </div>
                     <div class="card-glow" aria-hidden="true"></div>
                 </article>
@@ -250,6 +263,9 @@
                             <span>上傳作品</span>
                             <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
+                        <button class="qr-btn" onclick="showQRCode(this)" aria-label="顯示 QR Code" title="顯示 QR Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+                        </button>
                     </div>
                     <div class="card-glow" aria-hidden="true"></div>
                 </article>
@@ -277,6 +293,9 @@
                             <span>上傳作品</span>
                             <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
+                        <button class="qr-btn" onclick="showQRCode(this)" aria-label="顯示 QR Code" title="顯示 QR Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+                        </button>
                     </div>
                     <div class="card-glow" aria-hidden="true"></div>
                 </article>
@@ -304,6 +323,9 @@
                             <span>上傳作品</span>
                             <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
+                        <button class="qr-btn" onclick="showQRCode(this)" aria-label="顯示 QR Code" title="顯示 QR Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+                        </button>
                     </div>
                     <div class="card-glow" aria-hidden="true"></div>
                 </article>
@@ -331,6 +353,9 @@
                             <span>上傳作品</span>
                             <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </a>
+                        <button class="qr-btn" onclick="showQRCode(this)" aria-label="顯示 QR Code" title="顯示 QR Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+                        </button>
                     </div>
                     <div class="card-glow" aria-hidden="true"></div>
                 </article>
@@ -502,7 +527,50 @@
         </div>
     </div>
 
+    <!-- Toast 通知 -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <div class="toast-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="toast-text">
+            <strong>已開啟 Google Drive</strong>
+            <span>請在新分頁中上傳你的作品</span>
+        </div>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+        <div class="modal-overlay" onclick="closeQRModal()"></div>
+        <div class="modal-content qr-modal-content">
+            <button class="qr-close" onclick="closeQRModal()" aria-label="關閉">&times;</button>
+            <h3 id="qrModalTitle" class="qr-modal-title">班級 QR Code</h3>
+            <p class="qr-modal-desc">掃描 QR Code 直接前往上傳頁面</p>
+            <div id="qrCanvas" class="qr-canvas"></div>
+            <p class="qr-class-name" id="qrClassName"></p>
+            <div class="qr-actions">
+                <button class="qr-action-btn" onclick="downloadQR()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    下載 QR Code
+                </button>
+                <button class="qr-action-btn secondary" onclick="printQR()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    列印
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Library (lightweight) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').catch(function() {});
+            });
+        }
+    </script>
 </body>
 </html>

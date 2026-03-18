@@ -1356,6 +1356,10 @@ button {
     .contact-info { flex-direction: column; align-items: center; }
 
     .scroll-indicator { display: none; }
+
+    .qr-btn { opacity: 1; bottom: 20px; right: 20px; }
+
+    .toast { bottom: 16px; }
 }
 
 /* ========== Responsive — Small Phone ========== */
@@ -1414,10 +1418,193 @@ button {
 .step-card:nth-child(3) { transition-delay: 0.3s; }
 .step-card:nth-child(4) { transition-delay: 0.45s; }
 
+/* ========== Toast 通知 ========== */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    z-index: 3000;
+    background: var(--text);
+    color: white;
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease-bounce);
+    max-width: 420px;
+    width: calc(100% - 48px);
+}
+
+.toast.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-icon svg {
+    color: white;
+}
+
+.toast-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.toast-text strong {
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.toast-text span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ========== QR Code Button ========== */
+.qr-btn {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all var(--duration-normal) var(--ease-bounce);
+    z-index: 3;
+    opacity: 0;
+}
+
+.class-card:hover .qr-btn {
+    opacity: 1;
+}
+
+.qr-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-bg);
+    transform: scale(1.15);
+}
+
+/* ========== QR Code Modal ========== */
+.qr-modal-content {
+    max-width: 400px;
+    padding: 40px 32px;
+}
+
+.qr-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--duration-fast);
+}
+
+.qr-close:hover {
+    background: var(--bg-section);
+    color: var(--text);
+}
+
+.qr-modal-title {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.qr-modal-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.qr-canvas {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.qr-class-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.qr-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.qr-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    transition: all var(--duration-normal) var(--ease-bounce);
+    background: var(--primary);
+    color: white;
+    min-height: 40px;
+}
+
+.qr-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.qr-action-btn.secondary {
+    background: var(--bg-section);
+    color: var(--text-secondary);
+}
+
+.qr-action-btn.secondary:hover {
+    background: var(--border);
+}
+
 /* ========== Print Styles ========== */
 @media print {
     .navbar, .hero-bg, .floating-crafts, .back-to-top,
-    .card-shimmer, .card-glow, .scroll-indicator, .loader { display: none; }
+    .card-shimmer, .card-glow, .scroll-indicator, .loader,
+    .toast, .qr-btn, #qrModal { display: none; }
     .hero { min-height: auto; padding: 40px 0; }
     .class-card { break-inside: avoid; }
 }
