@@ -1,5 +1,5 @@
 /**
- * 手作課作品上傳平台 - 主程式 v2.1
+ * 手作課作品上傳平台 - 主程式 v2.2
  * Features: Google Drive integration, scroll animations,
  *           loader, back-to-top, mobile nav, accessibility
  */
