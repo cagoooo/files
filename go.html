@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#4F46E5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,6 +18,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -27,8 +28,8 @@
         .card {
             background: white;
             border-radius: 28px;
-            padding: 40px 32px;
-            max-width: 440px;
+            padding: 36px 28px;
+            max-width: 460px;
             width: 100%;
             text-align: center;
             box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
@@ -46,26 +47,25 @@
             to { transform: scale(1); }
         }
 
-        .step-icon {
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .top-icon {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
             animation: pop 0.4s ease-out 0.2s both;
         }
 
-        .step-icon svg {
-            width: 40px;
-            height: 40px;
-            color: white;
-        }
-
-        .step-icon.login { background: linear-gradient(135deg, #F97316, #EA580C); }
-        .step-icon.success { background: linear-gradient(135deg, #22C55E, #16A34A); }
-        .step-icon.error { background: linear-gradient(135deg, #EF4444, #DC2626); }
+        .top-icon svg { width: 40px; height: 40px; color: white; }
+        .top-icon.upload { background: linear-gradient(135deg, #4F46E5, #7C3AED); }
+        .top-icon.error { background: linear-gradient(135deg, #EF4444, #DC2626); }
 
         h1 {
             font-family: 'Fredoka', sans-serif;
@@ -75,15 +75,15 @@
             margin-bottom: 8px;
         }
 
-        .class-name {
+        .class-badge {
             font-family: 'Fredoka', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
             color: #4F46E5;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: inline-block;
             background: #EEF2FF;
-            padding: 4px 16px;
+            padding: 6px 20px;
             border-radius: 20px;
         }
 
@@ -91,9 +91,10 @@
             color: #475569;
             font-size: 0.95rem;
             line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
+        /* ===== 主按鈕 ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -121,100 +122,157 @@
             background: linear-gradient(135deg, #F97316, #EA580C);
             box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
         }
-        .btn-login:hover { box-shadow: 0 12px 32px rgba(249, 115, 22, 0.4); }
 
         .btn-drive {
             background: linear-gradient(135deg, #4F46E5, #7C3AED);
             box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
         }
-        .btn-drive:hover { box-shadow: 0 12px 32px rgba(79, 70, 229, 0.4); }
 
         .btn-home {
             background: linear-gradient(135deg, #64748B, #475569);
             box-shadow: 0 8px 24px rgba(71, 85, 105, 0.3);
         }
 
-        .step-flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            font-size: 0.8rem;
-            color: #94A3B8;
+        /* ===== 重要提醒卡片 ===== */
+        .alert-card {
+            background: linear-gradient(135deg, #FFF7ED, #FFFBEB);
+            border: 2px solid #FB923C;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 24px;
+            text-align: left;
+            animation: slideUp 0.5s ease-out 0.3s both;
         }
 
-        .step-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+        .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .alert-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #F97316, #EA580C);
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .alert-icon svg { width: 22px; height: 22px; color: white; }
+
+        .alert-title {
+            font-family: 'Fredoka', sans-serif;
             font-weight: 700;
+            font-size: 1rem;
+            color: #9A3412;
+        }
+
+        .alert-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .alert-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: #78350F;
+            line-height: 1.5;
+        }
+
+        .alert-steps li + li {
+            border-top: 1px dashed #FDBA74;
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #F97316;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
             font-size: 0.75rem;
             font-family: 'Fredoka', sans-serif;
+            flex-shrink: 0;
+            margin-top: 1px;
         }
 
-        .step-dot.active {
-            background: #4F46E5;
-            color: white;
+        .alert-steps li strong {
+            color: #EA580C;
         }
 
-        .step-dot.done {
-            background: #22C55E;
-            color: white;
+        .alert-email {
+            display: inline-block;
+            background: white;
+            border: 1px solid #FDBA74;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #EA580C;
+            word-break: break-all;
         }
 
-        .step-dot.pending {
-            background: #E2E8F0;
-            color: #94A3B8;
-        }
-
-        .step-arrow {
-            color: #CBD5E1;
-            font-size: 1rem;
-        }
-
-        .tips {
+        /* ===== 提示區塊 ===== */
+        .tips-section {
             margin-top: 24px;
             padding-top: 20px;
             border-top: 1px solid #E2E8F0;
         }
 
-        .tips-title {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: #F97316;
-            margin-bottom: 10px;
+        .tip-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #F8FAFC;
+            border-radius: 14px;
+            margin-bottom: 8px;
+            text-align: left;
+            transition: background 0.2s;
+        }
+
+        .tip-item:last-child { margin-bottom: 0; }
+
+        .tip-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-        }
-
-        .tips ul {
-            list-style: none;
-            text-align: left;
-            font-size: 0.82rem;
-            color: #64748B;
-            line-height: 1.8;
-        }
-
-        .tips li {
-            display: flex;
-            align-items: flex-start;
-            gap: 6px;
-            margin-bottom: 4px;
-        }
-
-        .tips li::before {
-            content: "💡";
             flex-shrink: 0;
+            font-size: 1.2rem;
         }
 
-        .email-hint {
-            display: inline-block;
+        .tip-icon.blue { background: #EEF2FF; }
+        .tip-icon.green { background: #F0FDF4; }
+        .tip-icon.purple { background: #F5F3FF; }
+
+        .tip-text {
+            font-size: 0.85rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .tip-text strong {
+            color: #1E1B4B;
+        }
+
+        /* ===== 其他元素 ===== */
+        .email-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background: #FFF7ED;
             border: 1px solid #FDBA74;
             padding: 8px 16px;
@@ -224,8 +282,18 @@
             margin-bottom: 20px;
         }
 
-        .email-hint strong {
-            color: #EA580C;
+        .email-badge strong { color: #EA580C; }
+
+        .skip-action {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: #94A3B8;
+        }
+
+        .skip-action a {
+            color: #4F46E5;
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         .back-link {
@@ -238,124 +306,109 @@
 
         .back-link:hover { color: #4F46E5; }
 
-        .secondary-action {
-            margin-top: 12px;
-            font-size: 0.82rem;
-            color: #94A3B8;
-        }
-
-        .secondary-action a {
-            color: #4F46E5;
-            text-decoration: underline;
-        }
-
+        /* ===== RWD ===== */
         @media (max-width: 480px) {
-            .card { padding: 32px 24px; border-radius: 24px; }
+            body { padding: 12px; }
+            .card { padding: 28px 20px; border-radius: 24px; }
             h1 { font-size: 1.3rem; }
-            .btn { font-size: 1rem; padding: 14px 24px; }
+            .btn { font-size: 1rem; padding: 14px 20px; }
+            .alert-card { padding: 16px; }
+            .alert-steps li { font-size: 0.85rem; }
+            .tip-item { padding: 10px 12px; gap: 10px; }
+            .tip-icon { width: 32px; height: 32px; font-size: 1rem; }
+            .tip-text { font-size: 0.82rem; }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .card { max-width: 480px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== 步驟 1：登入石門信箱 ===== -->
-    <div class="card" id="step1Card">
-        <div class="step-icon login">
+    <!-- ===== 主卡片：登入 & 開啟資料夾 ===== -->
+    <div class="card" id="mainCard">
+        <div class="top-icon upload">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
             </svg>
         </div>
 
-        <div class="step-flow">
-            <span class="step-dot active">1</span>
-            <span class="step-arrow">→</span>
-            <span class="step-dot pending">2</span>
-            <span class="step-arrow">→</span>
-            <span class="step-dot pending">3</span>
-        </div>
-
-        <h1>登入石門信箱</h1>
-        <div class="class-name" id="className1">載入中...</div>
+        <h1>上傳手作課作品</h1>
+        <div class="class-badge" id="classBadge">載入中...</div>
 
         <p class="desc">
-            請點擊下方按鈕，使用<strong>石門信箱帳號</strong>登入 Google。<br>
-            登入後會自動回到這個頁面。
+            點擊下方按鈕登入<strong>石門信箱</strong>後，<br>
+            即可開啟 Google 雲端資料夾上傳作品。
         </p>
 
-        <div class="email-hint">
-            📧 請使用 <strong>@mail2.smes.tyc.edu.tw</strong> 帳號登入
+        <div class="email-badge">
+            <span>📧</span>
+            <span>請使用 <strong>@mail2.smes.tyc.edu.tw</strong> 登入</span>
         </div>
 
+        <!-- 登入按鈕 -->
         <button id="loginBtn" class="btn btn-login" onclick="startLogin()">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
                 <polyline points="10 17 15 12 10 7"/>
                 <line x1="15" y1="12" x2="3" y2="12"/>
             </svg>
-            登入石門信箱
+            登入石門信箱 & 開啟資料夾
         </button>
 
-        <p class="secondary-action" id="skipLogin" style="display:none;">
-            已經登入了？ <a href="#" onclick="goToStep2(); return false;">直接開啟資料夾 →</a>
+        <p class="skip-action" id="skipLogin" style="display:none;">
+            已經登入了？ <a onclick="openDriveDirect()">直接開啟資料夾 →</a>
         </p>
 
-        <div class="tips">
-            <div class="tips-title">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                手機操作提示
+        <!-- ===== 重要提醒：切換帳號 ===== -->
+        <div class="alert-card">
+            <div class="alert-header">
+                <div class="alert-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </div>
+                <span class="alert-title">開啟後帳號不對？請切換帳號！</span>
             </div>
-            <ul>
-                <li>如果手機問你「使用 App 或瀏覽器開啟」，請選<strong>「瀏覽器」</strong></li>
-                <li>請確認登入的是<strong>石門信箱帳號</strong>（不是父母帳號）</li>
-                <li>登入完成後瀏覽器會跳回來，請繼續操作</li>
-            </ul>
+
+            <ol class="alert-steps">
+                <li>
+                    <span class="step-num">1</span>
+                    <span>進入 Google 雲端後，點右上角的<strong>帳號頭像</strong>（圓形圖示）</span>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <span>選擇<strong>「切換帳戶」</strong>或<strong>「新增帳戶」</strong></span>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <span>登入你的石門信箱帳號：<br><span class="alert-email">你的帳號@mail2.smes.tyc.edu.tw</span></span>
+                </li>
+                <li>
+                    <span class="step-num">4</span>
+                    <span>切換成功後就能看到班級資料夾，即可上傳作品</span>
+                </li>
+            </ol>
         </div>
 
-        <a href="./" class="back-link">← 回到手作課作品上傳平台</a>
-    </div>
-
-    <!-- ===== 步驟 2：開啟 Drive 資料夾 ===== -->
-    <div class="card" id="step2Card" style="display:none;">
-        <div class="step-icon success">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"/>
-            </svg>
-        </div>
-
-        <div class="step-flow">
-            <span class="step-dot done">✓</span>
-            <span class="step-arrow">→</span>
-            <span class="step-dot active">2</span>
-            <span class="step-arrow">→</span>
-            <span class="step-dot pending">3</span>
-        </div>
-
-        <h1>登入成功！</h1>
-        <div class="class-name" id="className2">載入中...</div>
-
-        <p class="desc">
-            現在點擊按鈕，在<strong>瀏覽器中</strong>開啟 Google 雲端資料夾，<br>
-            上傳你的手作課作品。
-        </p>
-
-        <button id="driveBtn" class="btn btn-drive" onclick="openDrive()">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-            </svg>
-            開啟資料夾上傳作品
-        </button>
-
-        <div class="tips">
-            <div class="tips-title">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                上傳小提示
+        <!-- ===== 提示區 ===== -->
+        <div class="tips-section">
+            <div class="tip-item">
+                <div class="tip-icon blue">📱</div>
+                <div class="tip-text">
+                    手機可能會跳到<strong>雲端硬碟 App</strong>，這是正常的！<br>
+                    只要確認帳號是石門信箱就可以上傳
+                </div>
             </div>
-            <ul>
-                <li>如果手機問你「使用 App 或瀏覽器開啟」，請選<strong>「瀏覽器」</strong></li>
-                <li>將照片或影片拖曳到資料夾即可上傳</li>
-                <li>建議命名格式：<strong>座號_姓名_作品名稱</strong></li>
-            </ul>
+            <div class="tip-item">
+                <div class="tip-icon green">📤</div>
+                <div class="tip-text">
+                    在資料夾中點<strong>「+」按鈕</strong>→<strong>「上傳」</strong>→ 選擇照片或影片即可
+                </div>
+            </div>
         </div>
 
         <a href="./" class="back-link">← 回到手作課作品上傳平台</a>
@@ -363,7 +416,7 @@
 
     <!-- ===== 錯誤狀態 ===== -->
     <div class="card" id="errorCard" style="display:none;">
-        <div class="step-icon error">
+        <div class="top-icon error">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <circle cx="12" cy="12" r="10"/>
                 <line x1="12" y1="8" x2="12" y2="12"/>
@@ -389,7 +442,7 @@
 
         // 驗證參數
         if (!folderId || folderId.length < 10) {
-            document.getElementById("step1Card").style.display = "none";
+            document.getElementById("mainCard").style.display = "none";
             document.getElementById("errorCard").style.display = "block";
             return;
         }
@@ -404,46 +457,35 @@
             "606": "六年六班 (606)"
         };
         var displayName = classNames[classLabel] || classLabel || "班級資料夾";
-        document.getElementById("className1").textContent = displayName;
-        document.getElementById("className2").textContent = displayName;
+        document.getElementById("classBadge").textContent = displayName;
 
-        // ========== Drive 網頁版 URL ==========
-        var driveWebUrl = "https://drive.google.com/drive/folders/" + folderId;
+        // ========== Drive URL ==========
+        var driveUrl = "https://drive.google.com/drive/folders/" + folderId;
 
-        // ========== 學校信箱網域 ==========
+        // ========== 學校信箱 ==========
         var emailDomain = "@mail2.smes.tyc.edu.tw";
 
         // ========== Google 登入 URL ==========
-        // continue 指向 drive.google.com（Google 接受的網域）
         var loginUrl = "https://accounts.google.com/v3/signin/identifier"
             + "?Email=" + encodeURIComponent(emailDomain)
-            + "&continue=" + encodeURIComponent(driveWebUrl)
+            + "&continue=" + encodeURIComponent(driveUrl)
             + "&flowName=GlifWebSignIn"
             + "&flowEntry=AddSession";
 
-        // 3 秒後顯示「已經登入了？」選項
+        // 3 秒後顯示「已經登入了？」
         setTimeout(function() {
-            var skip = document.getElementById("skipLogin");
-            if (skip) skip.style.display = "block";
+            var el = document.getElementById("skipLogin");
+            if (el) el.style.display = "block";
         }, 3000);
 
-        // ========== 步驟 1：登入 ==========
+        // ========== 登入並開啟資料夾 ==========
         window.startLogin = function() {
-            // 在「同一個分頁」中導向 Google 登入
-            // 這樣登入完成後，Google 的 continue 會在同一分頁中跳轉至 Drive
-            // 由於是在瀏覽器分頁內的頁面導航，不容易被 Drive App 攔截
             window.location.href = loginUrl;
         };
 
-        // ========== 步驟 2：直接開 Drive ==========
-        window.goToStep2 = function() {
-            document.getElementById("step1Card").style.display = "none";
-            document.getElementById("step2Card").style.display = "block";
-        };
-
-        window.openDrive = function() {
-            // 在同一分頁中開啟 Drive（不觸發 App Deep Link）
-            window.location.replace(driveWebUrl);
+        // ========== 直接開啟資料夾（已登入的情況） ==========
+        window.openDriveDirect = function() {
+            window.location.href = driveUrl;
         };
 
     })();
