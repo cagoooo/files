@@ -24,20 +24,22 @@ window.addEventListener("load", function () {
     handleScrollAnimations();
 });
 
-// ========== Google Drive（含學校帳號登入導向 + 中繼頁防 App 跳轉） ==========
+// ========== Google Drive（中繼頁防 App 跳轉） ==========
 /**
  * 開啟 Google Drive 資料夾
  *
- * 流程（v3.2 改良）：
- * 1. Google 登入頁（預填學校信箱網域）
- * 2. 登入成功 → 跳轉至中繼頁 go.html（留在瀏覽器內）
- * 3. 中繼頁使用 location.replace 跳轉 → Drive /u/0/ 網頁版 URL
+ * 流程（v3.2.1 修正）：
+ * 1. 先開啟中繼頁 go.html（在新分頁中，留在瀏覽器）
+ * 2. 中繼頁顯示班級資訊 + 提供「登入石門信箱」按鈕
+ * 3. 按鈕觸發 Google 登入（continue 指向 drive.google.com，Google 接受）
+ * 4. 登入成功 → 在同一分頁中開啟 Drive（不跳 App）
  *
- * 為什麼需要中繼頁？
- * - 手機登入後如果直接跳轉 drive.google.com，會被 Google Drive App 攔截
- * - App 可能使用父母帳號（非石門信箱），導致無法存取學校資料夾
- * - 透過中繼頁 go.html，整個流程都在瀏覽器中完成
- * - /u/0/ 格式指定使用剛登入的帳號，確保使用正確的石門信箱
+ * 為什麼不直接把 continue 指向 go.html？
+ * → Google 的 continue 參數只接受 Google 網域，第三方 URL 會回 400 錯誤
+ *
+ * 為什麼先開中繼頁？
+ * → 在瀏覽器分頁內用 location.replace 觸發的導航，
+ *   不容易被手機 OS 攔截跳轉至 App
  */
 function openDriveFolder(element, event) {
     event.preventDefault();
@@ -55,21 +57,11 @@ function openDriveFolder(element, event) {
     var classNum = card ? card.getAttribute("data-class") : "0";
     var classCode = "60" + classNum;
 
-    // 中繼頁 URL（登入後跳轉至此頁面，留在瀏覽器，不觸發 Drive App）
+    // 直接開啟中繼頁（不經由 Google 登入，避免 400 錯誤）
     var baseUrl = window.location.href.replace(/[?#].*$/, "").replace(/\/[^/]*$/, "/");
-    var redirectUrl = baseUrl + "go.html?folder=" + encodeURIComponent(folderId) + "&class=" + classCode;
+    var goUrl = baseUrl + "go.html?folder=" + encodeURIComponent(folderId) + "&class=" + classCode;
 
-    // 學校信箱網域（從 config.js 讀取）
-    var emailDomain = DRIVE_CONFIG.SCHOOL_EMAIL_DOMAIN || "@mail2.smes.tyc.edu.tw";
-
-    // 組合 Google 登入 URL：預填信箱網域 + 登入後跳轉至中繼頁
-    var loginUrl = "https://accounts.google.com/v3/signin/identifier"
-        + "?Email=" + encodeURIComponent(emailDomain)
-        + "&continue=" + encodeURIComponent(redirectUrl)
-        + "&flowName=GlifWebSignIn"
-        + "&flowEntry=AddSession";
-
-    window.open(loginUrl, "_blank", "noopener,noreferrer");
+    window.open(goUrl, "_blank", "noopener,noreferrer");
 
     // GA4: 追蹤上傳點擊
     trackEvent("upload_click", {
@@ -242,16 +234,10 @@ function showQRCode(btn) {
 
     currentQRClassName = classNames[classNum] || "班級 " + classNum;
 
-    // 組合完整的登入 URL（經由中繼頁）
+    // QR Code 直接指向中繼頁（掃碼後在瀏覽器中開啟）
     var classCode = "60" + classNum;
     var baseUrl = window.location.href.replace(/[?#].*$/, "").replace(/\/[^/]*$/, "/");
-    var redirectUrl = baseUrl + "go.html?folder=" + encodeURIComponent(folderId) + "&class=" + classCode;
-    var emailDomain = DRIVE_CONFIG.SCHOOL_EMAIL_DOMAIN || "@mail2.smes.tyc.edu.tw";
-    var loginUrl = "https://accounts.google.com/v3/signin/identifier"
-        + "?Email=" + encodeURIComponent(emailDomain)
-        + "&continue=" + encodeURIComponent(redirectUrl)
-        + "&flowName=GlifWebSignIn"
-        + "&flowEntry=AddSession";
+    var loginUrl = baseUrl + "go.html?folder=" + encodeURIComponent(folderId) + "&class=" + classCode;
 
     // 產生 QR Code
     var qrCanvas = document.getElementById("qrCanvas");
