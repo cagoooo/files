@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>手作課作品上傳平台 ✂️🎨</title>
-    <!-- Version: 3.0 | 2026-03-18 -->
+    <!-- Version: 3.1 | 2026-03-18 -->
     <meta name="description" content="六年級手作課作品上傳平台 — 記錄每一份用心創作的美好時刻，透過 Google 雲端輕鬆上傳照片與影片。">
 
-    <!-- Favicon -->
+    <!-- Favicon (多尺寸 PNG + SVG) -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
     <!-- Open Graph / Facebook / LINE -->
     <meta property="og:type" content="website">
@@ -560,10 +560,10 @@
         </div>
     </div>
 
-    <!-- QR Code Library (lightweight) -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
+    <!-- QR Code Library (lightweight, deferred) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script defer src="js/config.js"></script>
+    <script defer src="js/main.js"></script>
     <script>
         // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
@@ -571,6 +571,20 @@
                 navigator.serviceWorker.register('sw.js').catch(function() {});
             });
         }
+        // GA4 Dynamic Loader — 讀取 config.js 中的 GA4_MEASUREMENT_ID
+        window.addEventListener('load', function() {
+            if (typeof DRIVE_CONFIG !== 'undefined' && DRIVE_CONFIG.GA4_MEASUREMENT_ID && DRIVE_CONFIG.GA4_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+                var gid = DRIVE_CONFIG.GA4_MEASUREMENT_ID;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gid;
+                document.head.appendChild(s);
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = function(){dataLayer.push(arguments);};
+                gtag('js', new Date());
+                gtag('config', gid);
+            }
+        });
     </script>
 </body>
 </html>

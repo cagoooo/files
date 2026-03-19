@@ -1,6 +1,6 @@
 # 手作課作品上傳平台 — 開發進度與未來規劃
 
-> **目前版本**：v3.0
+> **目前版本**：v3.1
 > **最後更新**：2026-03-18
 > **GitHub**：https://github.com/cagoooo/files
 > **線上版**：https://cagoooo.github.io/files/
@@ -11,6 +11,7 @@
 
 | 版本 | 日期 | Commit | 說明 |
 |------|------|--------|------|
+| **v3.1** | 2026-03-18 | — | OG Image / PWA Icon PNG 化、GA4 追蹤整合、Lighthouse 效能優化（defer 腳本、cursor 無障礙） |
 | **v3.0** | 2026-03-18 | `b608555` | Toast 上傳提示通知、PWA 支援（manifest.json + Service Worker）、QR Code 班級快捷（產生/下載/列印） |
 | **v2.2** | 2026-03-18 | `9107f84` | 更新聯絡 Email 為 `ipad@mail2.smes.tyc.edu.tw`、Footer 加入「Made with 💝 by 阿凱老師」署名與學校超連結 |
 | **v2.1** | 2026-03-18 | `eb42f33` | 加入石門信箱登入導向機制、Google 登入頁預填 `@mail2.smes.tyc.edu.tw` 網域、登入提示 UI |
@@ -19,7 +20,7 @@
 
 ---
 
-## 一、已完成項目 ✅（共 37 項）
+## 一、已完成項目 ✅（共 43 項）
 
 ### 核心功能
 
@@ -81,17 +82,33 @@
 | # | 項目 | 版本 | 說明 |
 |---|------|------|------|
 | 31 | **SVG Favicon** | v2.0 | 三色漸層「作」字圖示，配上傳箭頭 |
-| 32 | **社群預覽圖 (OG Image)** | v2.0 | 1200x630 SVG，含 Logo、標題、6 色班級圓點 |
-| 33 | **OG / Twitter / LINE Meta** | v2.0 | 完整的 meta tags 含絕對路徑（`cagoooo.github.io`） |
+| 32 | **Favicon PNG 多尺寸** | v3.1 | 16/32/180/192/512 px PNG，支援所有瀏覽器與 PWA |
+| 33 | **社群預覽圖 (OG Image PNG)** | v3.1 | 1200x630 PNG，紫色漸層+中文標題+6 色圓點，LINE/FB 可正常顯示 |
+| 34 | **OG / Twitter / LINE Meta** | v2.0 | 完整的 meta tags 含絕對路徑（`cagoooo.github.io`） |
+
+### 數據追蹤
+
+| # | 項目 | 版本 | 說明 |
+|---|------|------|------|
+| 35 | **GA4 追蹤整合** | v3.1 | `config.js` 設定 Measurement ID，自動載入 GA4，不硬編碼 |
+| 36 | **GA4 自訂事件** | v3.1 | 追蹤 `upload_click`（含班級）、`qr_code_view`、`qr_code_download` |
+
+### Lighthouse 效能優化
+
+| # | 項目 | 版本 | 說明 |
+|---|------|------|------|
+| 37 | **Script defer 載入** | v3.1 | QR Code CDN、config.js、main.js 加入 `defer`，減少 render blocking |
+| 38 | **互動元素 cursor** | v3.1 | 全域 `cursor: pointer` 規則，提升無障礙與 UX |
+| 39 | **Service Worker 快取更新** | v3.1 | 快取版本升級至 v3.1，新增 PNG icon 預快取 |
 
 ### 部署 & 文件
 
 | # | 項目 | 版本 | 說明 |
 |---|------|------|------|
-| 34 | **GitHub 推送** | v3.0 | 已推送至 `https://github.com/cagoooo/files`（共 7 個 commits） |
-| 35 | **README 文件** | v3.0 | 含功能特色、設定教學、登入機制說明、版本紀錄 |
-| 36 | **PROGRESS 進度文件** | v3.0 | 完整開發進度表與未來優化路線圖（本文件） |
-| 37 | **Footer 署名** | v2.2 | 「Made with 💝 by 阿凱老師」含學校網站超連結（開新視窗） |
+| 40 | **GitHub 推送** | v3.1 | 已推送至 `https://github.com/cagoooo/files` |
+| 41 | **README 文件** | v3.1 | 含功能特色、設定教學、登入機制說明、版本紀錄 |
+| 42 | **PROGRESS 進度文件** | v3.1 | 完整開發進度表與未來優化路線圖（本文件） |
+| 43 | **Footer 署名** | v2.2 | 「Made with 💝 by 阿凱老師」含學校網站超連結（開新視窗） |
 
 ---
 
@@ -99,40 +116,26 @@
 
 | # | 項目 | 優先級 | 狀態 | 說明 |
 |---|------|--------|------|------|
-| 1 | **啟用 GitHub Pages** | 🔴 高 | ⬜ 待做 | Settings → Pages → Deploy from branch (main) → Save |
-| 2 | **確認 Drive 資料夾權限** | 🔴 高 | ⬜ 待做 | 確認 `@mail2.smes.tyc.edu.tw` 學生帳號可存取 |
-| 3 | **OG Image 轉 PNG** | 🟡 中 | ⬜ 待做 | 社群平台不支援 SVG，需轉 PNG 並更新 meta tag |
-| 4 | **PWA 圖示轉 PNG** | 🟡 中 | ⬜ 待做 | 產生 192x192、512x512 PNG icon 供 manifest.json 使用 |
-| 5 | **LINE/FB 分享測試** | 🟡 中 | ⬜ 待做 | 部署後在 LINE/FB 分享連結，確認預覽卡片正常 |
-| 6 | **手機瀏覽器測試** | 🟡 中 | ⬜ 待做 | 在 iPhone/Android 實機測試 RWD、登入導向、PWA 安裝 |
+| 1 | ~~啟用 GitHub Pages~~ | — | ✅ 已完成 | Settings → Pages → Deploy from branch (main) → Save |
+| 2 | ~~確認 Drive 資料夾權限~~ | — | ✅ 已完成 | `@mail2.smes.tyc.edu.tw` 學生帳號已可存取 |
+| 3 | ~~OG Image 轉 PNG~~ | — | ✅ 已完成 | 1200x630 PNG，紫色漸層 + 中文標題（v3.1） |
+| 4 | ~~PWA 圖示轉 PNG~~ | — | ✅ 已完成 | 192x192 + 512x512 + apple-touch-icon 180x180（v3.1） |
+| 5 | **設定 GA4 Measurement ID** | 🟡 中 | ⬜ 待做 | 在 `config.js` 中填入真實的 GA4 ID（目前為佔位符） |
+| 6 | **LINE/FB 分享測試** | 🟡 中 | ⬜ 待做 | 部署後在 LINE/FB 分享連結，確認預覽卡片正常 |
+| 7 | **手機瀏覽器測試** | 🟡 中 | ⬜ 待做 | 在 iPhone/Android 實機測試 RWD、登入導向、PWA 安裝 |
 
 ---
 
 ## 三、未來優化改良建議 🚀
 
-### 第一優先級（🔴 高）— 建議盡快實作
+### ~~第一優先級~~ ✅ 已完成
 
-#### 3.1 OG Image & PWA Icon PNG 化
-- **為什麼**：LINE、Facebook 的爬蟲不支援 SVG 格式，分享時不會顯示預覽圖；PWA 安裝需要 PNG 圖示
-- **怎麼做**：
-  - 方案 A：用線上工具（svgtopng.com）將 `images/og-image.svg` 轉成 `og-image.png`
-  - 方案 B：用 Figma/Canva 重新製作 1200x630 的 PNG 預覽圖
-  - 用同樣工具將 `images/favicon.svg` 轉成 192x192 和 512x512 PNG
-  - 更新 `index.html` 中 `og:image` 路徑為 `.png`
-- **預估工時**：15 分鐘
-
-#### 3.2 Google Analytics 4 追蹤
-- **為什麼**：了解各班使用頻率、追蹤上傳點擊次數、優化網站體驗
-- **怎麼做**：
-  - 申請 GA4 property → 取得 Measurement ID
-  - 在 `index.html` 加入 GA4 tracking code
-  - 自訂事件追蹤：`upload_click`（含班級參數）、`qr_code_view`、`qr_download`
-  - GA 後台查看各班使用報表與趨勢
-- **預估工時**：15 分鐘
+> ✅ **3.1 OG Image & PWA Icon PNG 化** — v3.1 已用 Python + Pillow 產生所有尺寸 PNG
+> ✅ **3.2 GA4 追蹤整合** — v3.1 已加入動態載入 + 自訂事件（upload_click / qr_code_view / qr_code_download）
 
 ---
 
-### 第二優先級（🟡 中）— 體驗提升
+### 第一優先級（🟡 中）— 體驗提升
 
 #### 3.3 班級密碼保護（簡易版）
 - **為什麼**：增加一層防護，避免學生誤點其他班級
@@ -241,8 +244,8 @@
 
 | 項目 | 說明 | 優先級 |
 |------|------|--------|
-| **OG Image PNG 化** | SVG 不被社群平台支援，需轉 PNG | 🔴 高 |
-| **PWA Icon PNG 化** | 產生 192x192 / 512x512 PNG icon 給 manifest.json | 🔴 高 |
+| ~~OG Image PNG 化~~ | ✅ 已完成（v3.1） | — |
+| ~~PWA Icon PNG 化~~ | ✅ 已完成（v3.1，含 apple-touch-icon） | — |
 | **Favicon PNG 多尺寸** | 產生 16/32/180 px 的 PNG 給不同瀏覽器 | 🟡 中 |
 | **Lighthouse 跑分** | 目標各項 90+，持續追蹤效能 | 🟡 中 |
 | **CSS 壓縮** | 使用 cssnano 或線上工具壓縮 CSS（預估可減少 30%） | 🟢 低 |
@@ -273,22 +276,30 @@
 
 ```
 files/
-├── index.html              # 主頁面 (v3.0, HTML5 語意化標籤)
+├── index.html              # 主頁面 (v3.1, HTML5 語意化標籤)
 ├── css/
-│   └── style.css           # 樣式表 (CSS Variables + RWD + Toast + QR Modal)
+│   └── style.css           # 樣式表 (CSS Variables + RWD + Toast + QR + cursor 優化)
 ├── js/
-│   ├── config.js           # 設定檔 (Drive ID + 學校信箱網域)
-│   └── main.js             # 互動功能 (v3.0, 登入導向 + Toast + QR Code)
+│   ├── config.js           # 設定檔 (Drive ID + 學校信箱 + GA4 ID)
+│   └── main.js             # 互動功能 (v3.1, 登入導向 + Toast + QR + GA4 事件)
 ├── images/
-│   ├── favicon.svg         # 網站圖示 (三色漸層「作」字)
-│   ├── og-image.svg        # 社群分享預覽圖 (1200x630)
-│   ├── icon-192.png        # PWA 圖示 192x192 (⚠️ 待產生)
-│   └── icon-512.png        # PWA 圖示 512x512 (⚠️ 待產生)
+│   ├── favicon.svg         # 網站圖示 SVG (三色漸層「作」字)
+│   ├── favicon-16.png      # Favicon 16x16 PNG
+│   ├── favicon-32.png      # Favicon 32x32 PNG
+│   ├── favicon-512.png     # Favicon 512x512 PNG (來源)
+│   ├── apple-touch-icon.png # Apple Touch Icon 180x180
+│   ├── icon-192.png        # PWA 圖示 192x192 ✅
+│   ├── icon-512.png        # PWA 圖示 512x512 ✅
+│   ├── og-image.svg        # 社群預覽圖 SVG 原始檔
+│   └── og-image.png        # 社群預覽圖 PNG 1200x630 ✅
 ├── manifest.json           # PWA Web App Manifest
-├── sw.js                   # Service Worker (Network First 快取策略)
+├── sw.js                   # Service Worker (Network First, v3.1 快取)
+├── tools/
+│   ├── generate_images.py  # Favicon PNG 產生工具
+│   └── generate_og.py      # OG Image PNG 產生工具
 ├── .gitignore
-├── README.md               # 說明文件 (v3.0)
-└── PROGRESS.md             # 本進度追蹤文件 (v3.0)
+├── README.md               # 說明文件 (v3.1)
+└── PROGRESS.md             # 本進度追蹤文件 (v3.1)
 ```
 
 ---
@@ -302,14 +313,17 @@ files/
 - [x] Toast 上傳提示通知（點擊上傳後底部浮動提示）
 - [x] PWA 支援（manifest.json + Service Worker）
 - [x] QR Code 班級快捷（產生 / 下載 PNG / 列印）
-- [x] 程式碼已推送至 GitHub（v3.0，共 7 個 commits）
+- [x] OG Image PNG 化（1200x630 紫色漸層 + 中文標題）
+- [x] PWA PNG 圖示（16/32/180/192/512 px 全尺寸）
+- [x] GA4 追蹤整合（config.js 設定 + 自訂事件追蹤）
+- [x] Lighthouse 優化（defer 腳本、cursor 無障礙、快取更新）
+- [x] 啟用 GitHub Pages ✅
+- [x] 確認 Google Drive 各資料夾權限 ✅
+- [x] 程式碼已推送至 GitHub（v3.1）
 - [x] README.md 含完整版本紀錄與登入機制說明
-- [ ] 啟用 GitHub Pages（Settings → Pages → main branch）
-- [ ] 確認 Google Drive 各資料夾權限（學校帳號可存取）
-- [ ] 將 OG image 轉為 PNG 格式
-- [ ] 產生 PWA PNG 圖示（192x192、512x512）
-- [ ] Lighthouse 效能檢測（目標 90+）
+- [ ] 設定真實 GA4 Measurement ID（config.js）
 - [ ] LINE/FB 分享連結測試預覽卡片
+- [ ] Lighthouse 實際跑分驗證（目標 90+）
 - [ ] 手機實機測試 RWD + 登入導向 + PWA 安裝
 
 ---
@@ -329,12 +343,12 @@ files/
   ├── ✅ PWA 支援（加到主畫面）
   └── ✅ QR Code 班級快捷
 
-第 3 批 ── 接下來建議做（15-30 分鐘）
-  ├── 📌 OG Image + PWA Icon PNG 化
-  ├── 📌 GA4 追蹤（了解使用數據）
-  └── 📌 Lighthouse 跑分優化
+第 3 批 ✅ 已完成（v3.1）
+  ├── ✅ OG Image + PWA Icon PNG 化
+  ├── ✅ GA4 追蹤整合（需填入真實 ID）
+  └── ✅ Lighthouse 效能優化
 
-第 4 批 ── 中期功能（30-60 分鐘）
+第 4 批 ── 接下來建議做（30-60 分鐘）
   ├── 📌 班級公告 / 最新消息
   ├── 📌 班級密碼保護
   ├── 📌 深色模式

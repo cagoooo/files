@@ -3,7 +3,7 @@
  * 快取策略：Network First（優先網路，失敗時用快取）
  */
 
-var CACHE_NAME = "craft-upload-v3";
+var CACHE_NAME = "craft-upload-v3.1";
 var ASSETS = [
     "./",
     "./index.html",
@@ -11,6 +11,7 @@ var ASSETS = [
     "./js/config.js",
     "./js/main.js",
     "./images/favicon.svg",
+    "./images/icon-192.png",
     "./manifest.json"
 ];
 

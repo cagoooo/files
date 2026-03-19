@@ -1,9 +1,16 @@
 /**
- * 手作課作品上傳平台 - 主程式 v3.0
+ * 手作課作品上傳平台 - 主程式 v3.1
  * Features: Google Drive integration, scroll animations,
  *           loader, back-to-top, mobile nav, accessibility,
- *           Toast notifications, QR Code generator
+ *           Toast notifications, QR Code generator, GA4 tracking
  */
+
+// ========== GA4 自訂事件追蹤 ==========
+function trackEvent(eventName, params) {
+    if (typeof gtag === "function") {
+        gtag("event", eventName, params || {});
+    }
+}
 
 // ========== Loader ==========
 window.addEventListener("load", function () {
@@ -53,6 +60,13 @@ function openDriveFolder(element, event) {
         + "&flowEntry=AddSession";
 
     window.open(loginUrl, "_blank", "noopener,noreferrer");
+
+    // GA4: 追蹤上傳點擊
+    var classNum = element.closest(".class-card") ? element.closest(".class-card").getAttribute("data-class") : "unknown";
+    trackEvent("upload_click", {
+        class_number: classNum,
+        class_name: "60" + classNum
+    });
 
     // 顯示 Toast 通知
     showToast();
@@ -253,6 +267,12 @@ function showQRCode(btn) {
 
     // 顯示 Modal
     document.getElementById("qrModal").style.display = "flex";
+
+    // GA4: 追蹤 QR Code 檢視
+    trackEvent("qr_code_view", {
+        class_number: classNum,
+        class_name: currentQRClassName
+    });
 }
 
 function closeQRModal() {
@@ -289,6 +309,9 @@ function downloadQR() {
         link.download = "QRCode_" + currentQRClassName.replace(/[^a-zA-Z0-9\u4e00-\u9fff]/g, "_") + ".png";
         link.href = canvas.toDataURL("image/png");
         link.click();
+
+        // GA4: 追蹤 QR Code 下載
+        trackEvent("qr_code_download", { class_name: currentQRClassName });
     };
     img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
 }

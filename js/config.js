@@ -27,6 +27,12 @@
  */
 
 const DRIVE_CONFIG = {
+    // ============ Google Analytics 4 ============
+    // 前往 https://analytics.google.com → 建立資源 → 取得 Measurement ID
+    // 將下方 "G-XXXXXXXXXX" 替換為你的真實 GA4 ID
+    // 留空或保持 "G-XXXXXXXXXX" 則不啟用追蹤
+    GA4_MEASUREMENT_ID: "G-XXXXXXXXXX",
+
     // ============ 學校信箱網域設定 ============
     // 學生必須使用此網域的帳號登入 Google 才能存取資料夾
     // 格式：@xxx.xxx.xxx（含 @ 符號）

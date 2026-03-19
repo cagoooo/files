@@ -80,6 +80,11 @@
     box-sizing: border-box;
 }
 
+/* Lighthouse: 所有互動元素加入 pointer cursor */
+button, [role="button"], a, summary, [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;
