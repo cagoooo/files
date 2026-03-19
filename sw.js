@@ -1,12 +1,13 @@
 /**
- * Service Worker — 手作課作品上傳平台 v3.0
+ * Service Worker — 手作課作品上傳平台 v3.2
  * 快取策略：Network First（優先網路，失敗時用快取）
  */
 
-var CACHE_NAME = "craft-upload-v3.1";
+var CACHE_NAME = "craft-upload-v3.2";
 var ASSETS = [
     "./",
     "./index.html",
+    "./go.html",
     "./css/style.css",
     "./js/config.js",
     "./js/main.js",

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入成功 — 手作課作品上傳平台</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', -apple-system, "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1E1B4B;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 40px 32px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22C55E, #16A34A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: pop 0.4s ease-out 0.3s both;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0); }
+            50% { transform: scale(1.15); }
+            to { transform: scale(1); }
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1E1B4B;
+            margin-bottom: 8px;
+        }
+
+        .class-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4F46E5;
+            margin-bottom: 16px;
+            display: inline-block;
+            background: #EEF2FF;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+
+        .desc {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .open-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
+            min-height: 56px;
+        }
+
+        .open-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(79, 70, 229, 0.4);
+        }
+
+        .open-btn:active {
+            transform: translateY(0);
+        }
+
+        .open-btn svg {
+            flex-shrink: 0;
+        }
+
+        .countdown {
+            font-size: 0.85rem;
+            color: #94A3B8;
+            margin-top: 16px;
+        }
+
+        .countdown strong {
+            color: #4F46E5;
+        }
+
+        .tips {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .tips-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #F97316;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .tips ul {
+            list-style: none;
+            text-align: left;
+            font-size: 0.82rem;
+            color: #64748B;
+            line-height: 1.8;
+        }
+
+        .tips li {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .tips li::before {
+            content: "💡";
+            flex-shrink: 0;
+        }
+
+        .copy-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: #F1F5F9;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-link:hover {
+            background: #E2E8F0;
+        }
+
+        .copy-link.copied {
+            background: #DCFCE7;
+            border-color: #86EFAC;
+            color: #166534;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 0.82rem;
+            color: #94A3B8;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #4F46E5;
+        }
+
+        /* Error state */
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #F97316, #EA580C);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .error-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 32px 24px; border-radius: 24px; }
+            h1 { font-size: 1.4rem; }
+            .open-btn { font-size: 1.05rem; padding: 14px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="mainCard">
+        <!-- 內容由 JavaScript 動態填入 -->
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+        </div>
+        <h1>登入成功！</h1>
+        <div class="class-name" id="className">載入中...</div>
+        <p class="desc">
+            你已使用石門信箱帳號登入，<br>
+            點擊下方按鈕在<strong>瀏覽器中</strong>開啟 Google 雲端資料夾上傳作品。
+        </p>
+        <a id="driveLink" href="#" class="open-btn" onclick="return openInBrowser(event);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+            </svg>
+            開啟資料夾上傳作品
+        </a>
+        <p class="countdown" id="countdown"></p>
+
+        <div class="tips">
+            <div class="tips-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                手機操作小提示
+            </div>
+            <ul>
+                <li>如果跳出「使用 App 開啟」的提示，請選擇<strong>「用瀏覽器開啟」</strong></li>
+                <li>在瀏覽器中上傳，可以確保使用正確的石門信箱帳號</li>
+                <li>上傳完成後可以關閉分頁，回到主頁面</li>
+            </ul>
+        </div>
+
+        <button class="copy-link" id="copyBtn" onclick="copyDriveLink()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            <span>複製資料夾連結</span>
+        </button>
+
+        <br>
+        <a href="./" class="back-link">← 回到手作課作品上傳平台</a>
+    </div>
+
+    <!-- 錯誤狀態（隱藏） -->
+    <div class="card" id="errorCard" style="display:none;">
+        <div class="error-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+        </div>
+        <h1>找不到班級資料</h1>
+        <p class="desc">連結可能有誤，請回到主頁面重新選擇班級。</p>
+        <a href="./" class="open-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            回到主頁面
+        </a>
+    </div>
+
+    <script>
+    (function() {
+        // ========== 讀取 URL 參數 ==========
+        var params = new URLSearchParams(window.location.search);
+        var folderId = params.get("folder") || "";
+        var classLabel = params.get("class") || "";
+
+        // 驗證參數
+        if (!folderId || folderId.length < 10) {
+            document.getElementById("mainCard").style.display = "none";
+            document.getElementById("errorCard").style.display = "block";
+            return;
+        }
+
+        // ========== 班級名稱 ==========
+        var classNames = {
+            "601": "六年一班 (601)",
+            "602": "六年二班 (602)",
+            "603": "六年三班 (603)",
+            "604": "六年四班 (604)",
+            "605": "六年五班 (605)",
+            "606": "六年六班 (606)"
+        };
+        var displayName = classNames[classLabel] || classLabel || "班級資料夾";
+        document.getElementById("className").textContent = displayName;
+
+        // ========== Drive URL（使用 /u/0/ 強制網頁版）==========
+        // /u/0/ 指定使用第一個登入帳號（剛登入的石門信箱帳號）
+        // 這個 URL 格式不容易被 Google Drive App 攔截
+        var driveWebUrl = "https://drive.google.com/drive/u/0/folders/" + folderId;
+        document.getElementById("driveLink").href = driveWebUrl;
+
+        // ========== 自動倒數跳轉 ==========
+        var seconds = 5;
+        var countdownEl = document.getElementById("countdown");
+
+        function updateCountdown() {
+            if (seconds > 0) {
+                countdownEl.innerHTML = "<strong>" + seconds + "</strong> 秒後自動開啟資料夾...";
+                seconds--;
+                setTimeout(updateCountdown, 1000);
+            } else {
+                countdownEl.innerHTML = "正在開啟資料夾...";
+                // 使用 location.replace 在同一視窗跳轉（避免觸發 App Deep Link）
+                window.location.replace(driveWebUrl);
+            }
+        }
+        updateCountdown();
+
+        // ========== 複製連結功能 ==========
+        window.copyDriveLink = function() {
+            var btn = document.getElementById("copyBtn");
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(driveWebUrl).then(function() {
+                    btn.classList.add("copied");
+                    btn.querySelector("span").textContent = "✅ 已複製！";
+                    setTimeout(function() {
+                        btn.classList.remove("copied");
+                        btn.querySelector("span").textContent = "複製資料夾連結";
+                    }, 2000);
+                });
+            } else {
+                // Fallback
+                var input = document.createElement("input");
+                input.value = driveWebUrl;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand("copy");
+                document.body.removeChild(input);
+                btn.querySelector("span").textContent = "✅ 已複製！";
+                setTimeout(function() {
+                    btn.querySelector("span").textContent = "複製資料夾連結";
+                }, 2000);
+            }
+        };
+
+        // ========== 點擊按鈕：強制在瀏覽器中開啟 ==========
+        window.openInBrowser = function(e) {
+            e.preventDefault();
+            // 停止倒數
+            seconds = -1;
+            countdownEl.innerHTML = "正在開啟資料夾...";
+
+            // 使用 location.replace 取代目前頁面（不會觸發 App Deep Link）
+            // 因為我們已經在瀏覽器中，replace 會讓瀏覽器直接導向該 URL
+            window.location.replace(driveWebUrl);
+            return false;
+        };
+
+    })();
+    </script>
+</body>
+</html>

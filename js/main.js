@@ -1,8 +1,9 @@
 /**
- * 手作課作品上傳平台 - 主程式 v3.1
+ * 手作課作品上傳平台 - 主程式 v3.2
  * Features: Google Drive integration, scroll animations,
  *           loader, back-to-top, mobile nav, accessibility,
- *           Toast notifications, QR Code generator, GA4 tracking
+ *           Toast notifications, QR Code generator, GA4 tracking,
+ *           中繼頁防 App 跳轉機制
  */
 
 // ========== GA4 自訂事件追蹤 ==========
@@ -23,17 +24,20 @@ window.addEventListener("load", function () {
     handleScrollAnimations();
 });
 
-// ========== Google Drive（含學校帳號登入導向） ==========
+// ========== Google Drive（含學校帳號登入導向 + 中繼頁防 App 跳轉） ==========
 /**
  * 開啟 Google Drive 資料夾
- * 流程：Google 登入頁（預填學校信箱網域）→ 登入成功 → 自動跳轉 Drive 資料夾
  *
- * URL 結構：
- * https://accounts.google.com/v3/signin/identifier
- *   ?Email=@mail2.smes.tyc.edu.tw        ← 預填學校信箱網域
- *   &continue=https://drive.google.com/drive/folders/FOLDER_ID  ← 登入後跳轉目標
- *   &flowName=GlifWebSignIn
- *   &flowEntry=AddSession
+ * 流程（v3.2 改良）：
+ * 1. Google 登入頁（預填學校信箱網域）
+ * 2. 登入成功 → 跳轉至中繼頁 go.html（留在瀏覽器內）
+ * 3. 中繼頁使用 location.replace 跳轉 → Drive /u/0/ 網頁版 URL
+ *
+ * 為什麼需要中繼頁？
+ * - 手機登入後如果直接跳轉 drive.google.com，會被 Google Drive App 攔截
+ * - App 可能使用父母帳號（非石門信箱），導致無法存取學校資料夾
+ * - 透過中繼頁 go.html，整個流程都在瀏覽器中完成
+ * - /u/0/ 格式指定使用剛登入的帳號，確保使用正確的石門信箱
  */
 function openDriveFolder(element, event) {
     event.preventDefault();
@@ -46,26 +50,31 @@ function openDriveFolder(element, event) {
         return;
     }
 
-    // Google Drive 資料夾目標 URL
-    var driveUrl = "https://drive.google.com/drive/folders/" + folderId;
+    // 取得班級編號
+    var card = element.closest(".class-card");
+    var classNum = card ? card.getAttribute("data-class") : "0";
+    var classCode = "60" + classNum;
+
+    // 中繼頁 URL（登入後跳轉至此頁面，留在瀏覽器，不觸發 Drive App）
+    var baseUrl = window.location.href.replace(/[?#].*$/, "").replace(/\/[^/]*$/, "/");
+    var redirectUrl = baseUrl + "go.html?folder=" + encodeURIComponent(folderId) + "&class=" + classCode;
 
     // 學校信箱網域（從 config.js 讀取）
     var emailDomain = DRIVE_CONFIG.SCHOOL_EMAIL_DOMAIN || "@mail2.smes.tyc.edu.tw";
 
-    // 組合 Google 登入 URL：預填信箱網域 + 登入後跳轉至 Drive 資料夾
+    // 組合 Google 登入 URL：預填信箱網域 + 登入後跳轉至中繼頁
     var loginUrl = "https://accounts.google.com/v3/signin/identifier"
         + "?Email=" + encodeURIComponent(emailDomain)
-        + "&continue=" + encodeURIComponent(driveUrl)
+        + "&continue=" + encodeURIComponent(redirectUrl)
         + "&flowName=GlifWebSignIn"
         + "&flowEntry=AddSession";
 
     window.open(loginUrl, "_blank", "noopener,noreferrer");
 
     // GA4: 追蹤上傳點擊
-    var classNum = element.closest(".class-card") ? element.closest(".class-card").getAttribute("data-class") : "unknown";
     trackEvent("upload_click", {
         class_number: classNum,
-        class_name: "60" + classNum
+        class_name: classCode
     });
 
     // 顯示 Toast 通知
@@ -233,12 +242,14 @@ function showQRCode(btn) {
 
     currentQRClassName = classNames[classNum] || "班級 " + classNum;
 
-    // 組合完整的登入 URL
-    var driveUrl = "https://drive.google.com/drive/folders/" + folderId;
+    // 組合完整的登入 URL（經由中繼頁）
+    var classCode = "60" + classNum;
+    var baseUrl = window.location.href.replace(/[?#].*$/, "").replace(/\/[^/]*$/, "/");
+    var redirectUrl = baseUrl + "go.html?folder=" + encodeURIComponent(folderId) + "&class=" + classCode;
     var emailDomain = DRIVE_CONFIG.SCHOOL_EMAIL_DOMAIN || "@mail2.smes.tyc.edu.tw";
     var loginUrl = "https://accounts.google.com/v3/signin/identifier"
         + "?Email=" + encodeURIComponent(emailDomain)
-        + "&continue=" + encodeURIComponent(driveUrl)
+        + "&continue=" + encodeURIComponent(redirectUrl)
         + "&flowName=GlifWebSignIn"
         + "&flowEntry=AddSession";
 
