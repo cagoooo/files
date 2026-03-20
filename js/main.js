@@ -1,5 +1,5 @@
 /**
- * 手作課作品上傳平台 - 主程式 v3.2
+ * 手作課照片影片素材上傳平台 - 主程式 v3.2
  * Features: Google Drive integration, scroll animations,
  *           loader, back-to-top, mobile nav, accessibility,
  *           Toast notifications, QR Code generator, GA4 tracking,
@@ -327,8 +327,8 @@ function printQR() {
         "p{margin-top:16px;color:#475569;font-size:14px;}</style></head><body>" +
         "<h2>" + currentQRClassName + "</h2>" +
         new XMLSerializer().serializeToString(svg) +
-        "<p>掃描 QR Code 即可上傳手作課作品</p>" +
-        "<p style='color:#94A3B8;font-size:12px;'>手作課作品上傳平台 — Made with 💝 by 阿凱老師</p>" +
+        "<p>掃描 QR Code 即可上傳手作課照片影片素材</p>" +
+        "<p style='color:#94A3B8;font-size:12px;'>手作課照片影片素材上傳平台 — Made with 💝 by 阿凱老師</p>" +
         "</body></html>"
     );
     printWindow.document.close();

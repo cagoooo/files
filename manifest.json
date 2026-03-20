@@ -1,7 +1,7 @@
 {
-    "name": "手作課作品上傳平台",
-    "short_name": "手作課上傳",
-    "description": "六年級手作課作品上傳平台 — 透過 Google 雲端輕鬆上傳照片與影片",
+    "name": "手作課照片影片素材上傳平台",
+    "short_name": "手作課素材上傳",
+    "description": "六年級手作課照片影片素材上傳平台 — 透過 Google 雲端輕鬆上傳照片與影片",
     "start_url": "./",
     "display": "standalone",
     "background_color": "#FAFBFF",

@@ -1,4 +1,4 @@
-# 手作課作品上傳平台 v3.0
+# 手作課照片影片素材上傳平台 v3.0
 
 > 讓學生透過網頁直接上傳手作課照片與影片至 Google Drive 班級資料夾。
 >
@@ -59,7 +59,7 @@ const DRIVE_CONFIG = {
 ## 學生使用流程
 
 ```
-① 選擇班級 → ② 點擊「上傳作品」→ ③ 自動跳轉 Google 登入頁
+① 選擇班級 → ② 點擊「上傳素材」→ ③ 自動跳轉 Google 登入頁
                                       （帳號欄已預填 @mail2.smes.tyc.edu.tw）
                                    → ④ 輸入帳號前半段 → 登入
                                    → ⑤ 自動進入 Drive 資料夾 → 上傳檔案
@@ -69,7 +69,7 @@ const DRIVE_CONFIG = {
 
 ## 登入機制說明
 
-點擊班級的「上傳作品」按鈕後，系統會組合以下 Google 登入 URL：
+點擊班級的「上傳素材」按鈕後，系統會組合以下 Google 登入 URL：
 
 ```
 https://accounts.google.com/v3/signin/identifier

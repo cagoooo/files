@@ -1,5 +1,5 @@
 /**
- * Service Worker — 手作課作品上傳平台 v3.2
+ * Service Worker — 手作課照片影片素材上傳平台 v3.2
  * 快取策略：Network First（優先網路，失敗時用快取）
  */
 
