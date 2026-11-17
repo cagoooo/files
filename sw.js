@@ -1,9 +1,9 @@
 /**
- * Service Worker — 手作課照片影片素材上傳平台 v3.2
+ * Service Worker — 手作課照片影片素材上傳平台 v3.2.2
  * 快取策略：Network First（優先網路，失敗時用快取）
  */
 
-var CACHE_NAME = "craft-upload-v3.2";
+var CACHE_NAME = "craft-upload-v3.2.2";
 var ASSETS = [
     "./",
     "./index.html",

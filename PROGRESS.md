@@ -1,7 +1,7 @@
 # 手作課照片影片素材上傳平台 — 開發進度與未來規劃
 
-> **目前版本**：v3.1
-> **最後更新**：2026-03-18
+> **目前版本**：v3.2.2
+> **最後更新**：2026-11-17
 > **GitHub**：https://github.com/cagoooo/files
 > **線上版**：https://cagoooo.github.io/files/
 
@@ -11,6 +11,7 @@
 
 | 版本 | 日期 | Commit | 說明 |
 |------|------|--------|------|
+| **v3.2.2** | 2026-11-17 | — | 頁尾署名改連阿凱老師教育科技創新專區（升版讓離線快取更新），SW 快取名改為 `craft-upload-v3.2.2` |
 | **v3.1** | 2026-03-18 | — | OG Image / PWA Icon PNG 化、GA4 追蹤整合、Lighthouse 效能優化（defer 腳本、cursor 無障礙） |
 | **v3.0** | 2026-03-18 | `b608555` | Toast 上傳提示通知、PWA 支援（manifest.json + Service Worker）、QR Code 班級快捷（產生/下載/列印） |
 | **v2.2** | 2026-03-18 | `9107f84` | 更新聯絡 Email 為 `ipad@mail2.smes.tyc.edu.tw`、Footer 加入「Made with 💝 by 阿凱老師」署名與學校超連結 |
