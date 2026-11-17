@@ -1,9 +1,11 @@
 /**
- * Service Worker — 手作課照片影片素材上傳平台 v3.2.2
+ * Service Worker — 手作課照片影片素材上傳平台 v3.2.3
  * 快取策略：Network First（優先網路，失敗時用快取）
  */
 
-var CACHE_NAME = "craft-upload-v3.2.2";
+// 同網域（cagoooo.github.io）的其他工具也共用 Cache Storage，只能清除本工具自己的快取
+var CACHE_PREFIX = "craft-upload-";
+var CACHE_NAME = CACHE_PREFIX + "v3.2.3";
 var ASSETS = [
     "./",
     "./index.html",
@@ -32,7 +34,7 @@ self.addEventListener("activate", function (event) {
         caches.keys().then(function (names) {
             return Promise.all(
                 names
-                    .filter(function (name) { return name !== CACHE_NAME; })
+                    .filter(function (name) { return name.indexOf(CACHE_PREFIX) === 0 && name !== CACHE_NAME; })
                     .map(function (name) { return caches.delete(name); })
             );
         })
